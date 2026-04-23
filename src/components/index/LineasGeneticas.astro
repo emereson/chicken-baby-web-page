@@ -1,0 +1,121 @@
+---
+// ProductsGrid.astro
+const products = [
+  {
+    id: 1,
+    title: "Gallinitas ponedoras",
+    badge: "Línea mejorada",
+    image:"/banner/4.jpg", 
+    link: "/pedido/gallinitas"
+  },
+  {
+    id: 2,
+    title: "Pollitos Cobb 500",
+    badge: "Línea mejorada",
+    image:"/banner/4.jpg", 
+    link: "/pedido/cobb-500"
+  },
+  {
+    id: 3,
+    title: "Pollitos Criollos",
+    badge: "Línea mejorada",
+    image:"/banner/5.jpg", 
+    link: "/pedido/criollos"
+  },
+  {
+    id: 4,
+    title: "Patos Pekín",
+    badge: "Alta rentabilidad",
+    image:"/banner/5.jpg", 
+    link: "/pedido/patos"
+  }
+];
+---
+
+<section class="bg-white py-16 overflow-hidden select-none" id="products-section">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="scroll-anim flex flex-col items-start gap-3 mb-12 opacity-0 translate-y-8 blur-sm transition-all duration-700 ease-out">
+      <div class="inline-flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)] shrink-0 animate-pulse" />
+        <span class="text-amber-600 font-bold tracking-[0.2em] text-xs uppercase">
+          Nuestras
+        </span>
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.1]">
+        Líneas de alta genética
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+      
+      {products.map((product, index) => {
+        const delay = index * 100;
+        
+        return (
+          <article 
+            class="scroll-anim flex flex-col bg-slate-950 rounded-[2rem] border border-slate-800 shadow-xl hover:shadow-2xl hover:shadow-amber-500/10 hover:-translate-y-2 transition-all duration-500 group overflow-hidden opacity-0 translate-y-12 scale-95"
+            style={`transition-delay: ${delay}ms; transition-property: opacity, transform, box-shadow, filter;`}
+          >
+            
+            <div class="relative h-60 overflow-hidden bg-slate-800">
+              <img 
+                src={product.image} 
+                alt={product.title} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+              />
+              <div class="absolute top-4 left-4 bg-slate-950/60 backdrop-blur-md border border-slate-700/50 text-amber-400 text-[11px] font-black uppercase tracking-wider px-4 py-2 rounded-2xl shadow-sm">
+                {product.badge}
+              </div>
+            </div>
+
+            <div class="p-6 md:p-8 flex flex-col flex-grow justify-between bg-slate-950 relative z-10">
+              
+              <h3 class="text-slate-50 font-extrabold text-xl mb-6 leading-tight group-hover:text-amber-400 transition-colors duration-300">
+                {product.title}
+              </h3>
+
+              <div class="mt-auto">
+                <a href={product.link} class="group/btn relative flex items-center justify-center h-12 px-6 rounded-xl transition-all duration-300 overflow-hidden w-full bg-slate-800 border border-slate-700 hover:border-transparent">
+                  
+                  <div class="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3)]"></div>
+                  
+                  <span class="relative z-10 flex items-center gap-2 text-slate-300 font-bold text-sm tracking-wide transition-all duration-300 group-active/btn:scale-95 group-hover/btn:text-slate-900">
+                    Realizar pedido
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </span>
+                </a>
+              </div>
+              
+            </div>
+
+          </article>
+        );
+      })}
+
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15 
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0', 'translate-y-8', 'translate-y-12', 'scale-95', 'blur-sm');
+          entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100', 'blur-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.scroll-anim');
+    animatedElements.forEach(el => observer.observe(el));
+  });
+</script>

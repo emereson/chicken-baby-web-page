@@ -1,0 +1,109 @@
+---
+// NuestraFamilia.astro
+---
+
+<section class="bg-slate-950 py-24 overflow-hidden relative" id="about-section">
+  
+  <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
+  <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 translate-y-1/3"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      
+      <div class="relative scroll-anim opacity-0 -translate-x-12 transition-all duration-1000 ease-out mt-10 lg:mt-0">
+        
+        <svg class="absolute -top-8 -right-8 w-40 h-40 text-slate-800 z-0" fill="currentColor" viewBox="0 0 100 100">
+          <pattern id="dot-pattern-dark" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="2"></circle>
+          </pattern>
+          <rect x="0" y="0" width="100" height="100" fill="url(#dot-pattern-dark)"></rect>
+        </svg>
+
+        <div class="relative z-10 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-slate-800 group">
+          <img 
+            src="/banner/6.jpg" 
+            alt="Familia Chickenbaby" 
+            class="w-full h-auto object-cover aspect-[4/5] md:aspect-square transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+        </div>
+
+        <div class="absolute -bottom-10 left-4 md:-bottom-12 md:-left-12 bg-slate-900/80 backdrop-blur-md py-6 px-8 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.6)] z-20 w-[calc(100%-2rem)] max-w-[320px] border border-slate-700/50 hover:-translate-y-2 transition-transform duration-500">
+          <h4 class="text-slate-50 text-xl md:text-2xl font-black mb-1 font-heading tracking-wide">
+            Líderes en aves bebes
+          </h4>
+          <p class="text-slate-400 text-sm font-medium">
+            La mejor calidad de aves bebes del mercado.
+          </p>
+        </div>
+      </div>
+
+      <div class="scroll-anim opacity-0 translate-x-12 transition-all duration-1000 ease-out delay-200 mt-12 lg:mt-0 lg:pl-8">
+        
+        <div class="inline-flex items-center gap-3 mb-4">
+          <span class="w-8 h-[2px] bg-sky-400"></span>
+          <h3 class="text-sky-400 font-bold tracking-[0.15em] text-sm md:text-base uppercase">
+            Nuestra Familia
+          </h3>
+        </div>
+        
+        <h2 class="text-slate-50 text-5xl md:text-6xl font-black mb-8 font-heading tracking-tight leading-none drop-shadow-md">
+          Chickenbaby
+        </h2>
+
+        <div class="space-y-6 text-slate-300 leading-relaxed text-sm md:text-base font-medium">
+          <p>
+            Avícola Chicken Baby fue creada en el 2007, con mucho esfuerzo y dedicación. Año tras año hemos ido creciendo y lo continuamos haciendo gracias al empeño que pone cada trabajador en ofrecer siempre las mejores aves bebes del mercado.
+          </p>
+          <p>
+            Para nosotros, cada cliente es especial e importante, es por ello que siempre le damos la mejor experiencia a la hora de entregarle nuestras aves bebes, las cuales son de excelente calidad. Contamos con una amplia experiencia en la producción de pollos bebes y otras aves (Cobb 500, pollos criollos, pavos y gallinas) así como también asesoramiento permanente por especialistas capacitados.
+          </p>
+        </div>
+
+        <div class="mt-10">
+          <a href="/detalles" class="group relative inline-flex items-center justify-center px-8 py-3.5 rounded-full overflow-hidden border border-sky-400/50 bg-slate-900 text-sky-400 font-bold text-sm transition-all duration-300 hover:border-sky-400 hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:-translate-y-1">
+            <span class="absolute inset-0 bg-sky-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span class="relative flex items-center gap-2">
+              Ver más detalle
+              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap');
+  
+  .font-heading {
+    font-family: 'Nunito', sans-serif;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15 
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0', '-translate-x-12', 'translate-x-12');
+          entry.target.classList.add('opacity-100', 'translate-x-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.scroll-anim');
+    animatedElements.forEach(el => observer.observe(el));
+  });
+</script>
