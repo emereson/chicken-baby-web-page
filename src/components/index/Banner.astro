@@ -1,5 +1,5 @@
 ---
-// Banner.astro — Hero Parallax Premium (Texto estático, Parallax solo en imagen)
+// Banner.astro — Hero Parallax Premium (Optimizado para iOS)
 const slides = [
     {
         id: 1,
@@ -30,58 +30,71 @@ const slides = [
     
     <div id="banner-container" class="relative w-full h-full overflow-hidden group">
         
-        <div id="slider-track" class="flex h-full cursor-grab active:cursor-grabbing will-change-transform">
+        <div id="slider-track" class="flex h-full will-change-transform" style="cursor: grab;">
         
         {slides.map((slide) => (
             <div class="slide-item w-full h-full relative flex-shrink-0 overflow-hidden">
 
-                <div class="absolute inset-0 w-full h-[130%] -top-[15%] pointer-events-none overflow-hidden bg-[#07090f]">
+                <!-- IMAGEN DE FONDO MEJORADA -->
+                <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden bg-slate-950">
                     <img
                         src={slide.image}
                         alt={slide.title}
-                        class="parallax-bg-img w-full h-full object-cover object-center opacity-80"
+                        loading="lazy"
+                        decoding="async"
+                        class="parallax-bg-img w-full h-full object-cover object-center"
+                        style="opacity: 0.85; backface-visibility: hidden; -webkit-backface-visibility: hidden;"
                     />
                 </div>
 
-                <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-950 via-slate-950/80 md:via-slate-950/60 to-transparent z-10 pointer-events-none"></div>
+                <!-- OVERLAY GRADIENTE MEJORADO PARA iOS -->
+                <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-950 via-slate-950/75 md:via-slate-950/70 to-slate-950/30 z-10 pointer-events-none will-change-auto"></div>
                 
-                <div class="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-amber-500/5 z-10 pointer-events-none mix-blend-overlay"></div>
+                <!-- OVERLAY DE COLOR SUTIL -->
+                <div class="absolute inset-0 bg-gradient-to-br from-sky-500/15 via-transparent to-amber-500/10 z-10 pointer-events-none mix-blend-multiply opacity-80"></div>
 
-                <div class="relative z-20 w-full h-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 flex flex-col justify-end md:justify-center pb-20 md:pb-0">
+                <!-- CONTENIDO PRINCIPAL -->
+                <div class="relative z-20 w-full h-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex flex-col justify-end md:justify-center pb-18 md:pb-0 md:pt-0">
                     
-                    <div class="max-w-2xl flex flex-col gap-5 md:gap-6">
+                    <div class="max-w-2xl flex flex-col gap-4 md:gap-6 will-change-auto">
                         
-                        <div class="inline-flex items-center gap-3">
-                            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-sky-400 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] shadow-[0_4px_12px_rgba(0,0,0,0.2)]">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                        <!-- BADGE -->
+                        <div class="inline-flex items-center gap-0 w-fit">
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/8 backdrop-blur-sm border border-white/15 text-sky-300 text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-[0.15em] shadow-[0_2px_8px_rgba(0,0,0,0.3)] will-change-auto">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" style="animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></span>
                                 {slide.badge}
                             </span>
                         </div>
 
-                        <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black leading-[1.05] tracking-tighter text-white m-0 font-heading drop-shadow-lg">
+                        <!-- TÍTULO PRINCIPAL -->
+                        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-black leading-[1.1] tracking-tighter text-white m-0 font-heading drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] will-change-auto">
                             {slide.title}<br />
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-200 to-white">
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-100 to-white" style="background-attachment: fixed;">
                                 {slide.highlight}
                             </span>
                         </h2>
 
-                        <p class="text-slate-300/90 text-sm md:text-lg font-medium leading-relaxed max-w-[480px]">
+                        <!-- DESCRIPCIÓN -->
+                        <p class="text-slate-300 text-sm sm:text-sm md:text-base font-medium leading-relaxed max-w-xs sm:max-w-sm md:max-w-[480px] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                             {slide.description}
                         </p>
 
-                        <div class="flex flex-wrap items-center gap-6 md:gap-8 mt-4">
+                        <!-- CTA Y STATS -->
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 mt-2 md:mt-4">
                             
-                            <a href={slide.ctaLink} class="group relative inline-flex items-center justify-center px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_15px_30px_rgba(14,165,233,0.2)]">
-                                <div class="absolute inset-0 bg-sky-500 transition-colors duration-300 group-hover:bg-sky-400"></div>
-                                <span class="relative z-10 flex items-center gap-2 text-slate-950 font-black text-xs md:text-sm uppercase tracking-widest">
+                            <!-- BOTÓN CTA -->
+                            <a href={slide.ctaLink} class="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 md:py-4 rounded-full overflow-hidden transition-all duration-300 active:scale-95 shadow-[0_8px_20px_rgba(14,165,233,0.25)] hover:shadow-[0_12px_30px_rgba(14,165,233,0.35)] will-change-transform" style="touch-action: manipulation;">
+                                <div class="absolute inset-0 bg-gradient-to-r from-sky-500 to-sky-400 transition-all duration-300 group-hover:from-sky-400 group-hover:to-sky-300" style="backface-visibility: hidden;"></div>
+                                <span class="relative z-10 flex items-center gap-2 text-slate-950 font-black text-xs md:text-sm uppercase tracking-widest will-change-auto">
                                     {slide.ctaText}
-                                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                    <svg class="w-3.5 h-3.5 md:w-4 md:h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="stroke-linecap: round; stroke-linejoin: round; stroke-width: 3;"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                                 </span>
                             </a>
 
-                            <div class="flex flex-col gap-0.5 border-l-2 border-slate-700 pl-5">
-                                <span class="text-amber-400 text-2xl md:text-3xl font-black leading-none">{slide.stat.value}</span>
-                                <span class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">{slide.stat.label}</span>
+                            <!-- ESTADÍSTICA -->
+                            <div class="flex flex-col gap-0 border-l-2 border-slate-600 pl-4 py-0">
+                                <span class="text-amber-300 text-xl sm:text-2xl md:text-3xl font-black leading-none will-change-auto">{slide.stat.value}</span>
+                                <span class="text-slate-400 text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider leading-tight will-change-auto">{slide.stat.label}</span>
                             </div>
 
                         </div>
@@ -92,94 +105,197 @@ const slides = [
         ))}
         </div>
 
-        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-white/10 z-40">
-            <div id="progress-bar" class="h-full w-0 bg-gradient-to-r from-sky-500 via-sky-300 to-amber-400 shadow-[0_0_15px_rgba(59,165,209,0.8)]" />
+        <!-- BARRA DE PROGRESO -->
+        <div class="absolute bottom-0 left-0 w-full h-0.5 bg-white/15 z-40 will-change-auto">
+            <div id="progress-bar" class="h-full w-0 bg-gradient-to-r from-sky-400 via-sky-300 to-amber-300 shadow-[0_0_10px_rgba(56,189,248,0.8)]" style="will-change: width;"></div>
         </div>
     </div>
 </section>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap');
-    .font-heading { font-family: 'Nunito', sans-serif; }
+    
+    .font-heading { 
+        font-family: 'Nunito', sans-serif;
+    }
 
-    /* Aceleración por hardware para el Parallax de la imagen */
+    /* Aceleración por hardware para el Parallax */
     .parallax-bg-img {
         will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+
+    /* Animación de pulso mejorada para iOS */
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+    }
+
+    /* Fix para texto con clip-path en iOS */
+    span[style*="bg-clip-text"] {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* Fix para escala en hover en móvil */
+    @media (hover: none) and (pointer: coarse) {
+        a {
+            transform: scale(1) !important;
+        }
+        
+        a:active {
+            transform: scale(0.95) !important;
+            transition: transform 150ms ease-out;
+        }
+    }
+
+    /* Mejorar rendering de imágenes en Safari */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    /* Fix para hardware acceleration en iOS */
+    #slider-track {
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+
+    /* Reducir motion para iOS si está habilitado */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation: none !important;
+            transition: none !important;
+        }
+    }
+
+    /* Asegurar que los gradientes se renderizan bien */
+    div[style*="background-attachment"] {
+        -webkit-background-clip: text;
+        background-clip: text;
     }
 </style>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         
-        const track       = document.getElementById("slider-track");
-        const progressBar = document.getElementById("progress-bar");
-        const section     = document.getElementById("hero-banner");
+        const track       = document.getElementById("slider-track") as HTMLElement | null;
+        const progressBar = document.getElementById("progress-bar") as HTMLElement | null;
+        const section     = document.getElementById("hero-banner") as HTMLElement | null;
 
         if (!track || !progressBar || !section) return;
 
-        // 1. LÓGICA DEL SLIDER
+        // 1. LÓGICA DEL SLIDER MEJORADA PARA iOS
         let currentIndex  = 0;
         const totalSlides = track.children.length;
-        let timer: any;
+        let timer: ReturnType<typeof setInterval> | null = null;
         let dragging = false;
         let startX   = 0;
+        let isDragging = false;
 
         const go = (animated = true) => {
-            track.style.transition = animated ? "transform 0.8s cubic-bezier(0.25, 1, 0.35, 1)" : "none";
-            track.style.transform  = `translateX(-${currentIndex * 100}%)`;
+            if (animated) {
+                track.style.transition = "transform 0.8s cubic-bezier(0.25, 1, 0.35, 1)";
+            } else {
+                track.style.transition = "none";
+            }
             
+            track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
+            
+            // Reset progress bar
             progressBar.style.transition = "none";
             progressBar.style.width = "0%";
+            
             setTimeout(() => {
                 progressBar.style.transition = "width 5000ms linear";
                 progressBar.style.width = "100%";
             }, 50);
         };
 
-        const next  = () => { currentIndex = (currentIndex + 1) % totalSlides; go(); };
-        const prev  = () => { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; go(); };
-        const reset = () => { clearInterval(timer); timer = setInterval(next, 5000); };
+        const next  = () => { 
+            if (!isDragging) {
+                currentIndex = (currentIndex + 1) % totalSlides; 
+                go(true); 
+            }
+        };
+        
+        const prev  = () => { 
+            if (!isDragging) {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; 
+                go(true); 
+            }
+        };
+        
+        const reset = () => { 
+            if (timer) clearInterval(timer); 
+            timer = setInterval(next, 5000); 
+        };
 
-        const onStart = (e: any) => {
+        const onStart = (e: MouseEvent | TouchEvent) => {
+            isDragging = true;
             dragging = true;
-            startX = e.type.includes("mouse") ? e.pageX : e.touches[0].pageX;
+            startX = e instanceof MouseEvent ? e.pageX : (e as TouchEvent).touches[0].pageX;
             track.style.transition = "none";
-            clearInterval(timer);
+            if (timer) clearInterval(timer);
         };
-        const onMove = (e: any) => {
-            if (!dragging) return;
-            const x   = e.type.includes("mouse") ? e.pageX : e.touches[0].pageX;
+
+        const onMove = (e: MouseEvent | TouchEvent) => {
+            if (!isDragging || !dragging) return;
+            
+            const x = e instanceof MouseEvent ? e.pageX : (e as TouchEvent).touches[0].pageX;
             const pct = ((x - startX) / track.offsetWidth) * 100;
-            track.style.transform = `translateX(calc(-${currentIndex * 100}% + ${pct}%))`;
+            track.style.transform = `translate3d(calc(-${currentIndex * 100}% + ${pct}%), 0, 0)`;
         };
-        const onEnd = (e: any) => {
-            if (!dragging) return;
+
+        const onEnd = (e: MouseEvent | TouchEvent) => {
+            if (!isDragging) return;
+            isDragging = false;
             dragging = false;
-            const ex    = e.type.includes("mouse") ? e.pageX : e.changedTouches[0].pageX;
+            
+            const ex = e instanceof MouseEvent ? e.pageX : (e as TouchEvent).changedTouches[0].pageX;
             const moved = ex - startX;
-            if (moved < -50) next();
-            else if (moved > 50) prev();
-            else go();
+            
+            if (Math.abs(moved) > 50) {
+                if (moved < 0) next();
+                else prev();
+            } else {
+                go(true);
+            }
+            
             reset();
         };
 
-        track.addEventListener("mousedown",  onStart);
-        track.addEventListener("touchstart", onStart, { passive: true });
-        window.addEventListener("mousemove", onMove);
-        track.addEventListener("touchmove",  onMove,  { passive: true });
-        window.addEventListener("mouseup",   onEnd);
-        track.addEventListener("touchend",   onEnd);
+        // Event listeners mejorados para iOS
+        track.addEventListener("mousedown", onStart as EventListener, { passive: false });
+        track.addEventListener("touchstart", onStart as EventListener, { passive: true });
+        
+        window.addEventListener("mousemove", onMove as EventListener, { passive: true });
+        track.addEventListener("touchmove", onMove as EventListener, { passive: true });
+        
+        window.addEventListener("mouseup", onEnd as EventListener);
+        track.addEventListener("touchend", onEnd as EventListener, { passive: true });
 
-        go(false); // Iniciar barra de progreso
+        // Prevenir comportamiento predeterminado en iOS
+        track.addEventListener("gesturestart", (e) => {
+            e.preventDefault();
+        });
+
+        go(false);
         timer = setInterval(next, 5000);
         
         window.addEventListener("resize", () => {
-            track.style.transition = "none";
-            track.style.transform  = `translateX(-${currentIndex * 100}%)`;
-        });
+            if (!isDragging) {
+                track.style.transition = "none";
+                track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
+            }
+        }, { passive: true });
 
-
-        // 2. PARALLAX EXCLUSIVO PARA LA IMAGEN (Atado al Scroll)
+        // 2. PARALLAX PARA LA IMAGEN (Optimizado para iOS)
         const parallaxImages = document.querySelectorAll('.parallax-bg-img') as NodeListOf<HTMLElement>;
         let ticking = false;
 
@@ -189,13 +305,11 @@ const slides = [
                     const scrollY = window.scrollY;
                     const sectionHeight = section.offsetHeight;
 
-                    // Solo animamos si el banner está visible en pantalla
+                    // Solo animamos si el banner está visible
                     if (scrollY <= sectionHeight) {
-                        // Movemos la imagen hacia abajo a una fracción de la velocidad del scroll
-                        // Esto crea el efecto 3D de profundidad
-                        const yOffset = scrollY * 0.4; 
+                        const yOffset = scrollY * 0.4;
                         
-                        parallaxImages.forEach(img => {
+                        parallaxImages.forEach((img) => {
                             img.style.transform = `translate3d(0, ${yOffset}px, 0)`;
                         });
                     }
@@ -205,5 +319,16 @@ const slides = [
                 ticking = true;
             }
         }, { passive: true });
+
+        // Limpiar event listeners en unmount (si es necesario)
+        return () => {
+            if (timer) clearInterval(timer);
+            track.removeEventListener("mousedown", onStart as EventListener);
+            track.removeEventListener("touchstart", onStart as EventListener);
+            window.removeEventListener("mousemove", onMove as EventListener);
+            track.removeEventListener("touchmove", onMove as EventListener);
+            window.removeEventListener("mouseup", onEnd as EventListener);
+            track.removeEventListener("touchend", onEnd as EventListener);
+        };
     });
 </script>
