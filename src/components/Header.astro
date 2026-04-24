@@ -24,8 +24,8 @@ const navItems = [
       [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-y-0 
       transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
 
-      <a href="/" class="relative z-10 group flex items-center pl-2 opacity-0 -translate-x-2 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-x-0 transition-all duration-700 delay-300">
-        <img src="/logo2.png" alt="Logo" class="h-8 md:h-9 w-auto transition-transform duration-500 group-hover:scale-105" />
+      <a href="/" class="relative z-10 group flex items-center  opacity-0 -translate-x-2 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-x-0 transition-all duration-700 delay-300">
+        <img src="/logo2.png" alt="Logo" class="h-10 md:h-9 w-auto transition-transform duration-500 group-hover:scale-105" />
       </a>
 
       <ul class="relative z-10 hidden md:flex space-x-1 lg:space-x-2 items-center text-[13px] font-semibold tracking-tight">
@@ -35,7 +35,7 @@ const navItems = [
 
           return (
             <li class="opacity-0 -translate-y-2 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-y-0 transition-all duration-700 ease-out" style={`transition-delay: ${delay}ms`}>
-              <a href={item.path} class={`relative px-4 py-2 transition-all duration-300 flex items-center gap-1.5 rounded-xl overflow-hidden group/item 
+              <a href={item.path} class={`text-sm relative px-4 py-2 transition-all duration-300 flex items-center gap-1.5 rounded-xl overflow-hidden group/item 
               ${active ? 'text-white bg-sky-500/10' : 'text-slate-300 hover:text-white hover:bg-sky-500/5'}`}>
                 
                 <svg class={`w-4 h-4 transition-transform duration-300 group-hover/item:-translate-y-0.5 
@@ -86,7 +86,7 @@ const navItems = [
           const active = currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path));
           return (
             <li>
-              <a href={item.path} class={`relative flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all overflow-hidden group 
+              <a href={item.path} class={` relative flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all overflow-hidden group 
               ${active ? 'text-white bg-sky-500/10' : 'text-slate-300 hover:text-white hover:bg-sky-500/5'}`}>
                 
                 <svg class={`w-5 h-5 transition-colors ${active ? 'text-amber-400' : 'text-slate-400 group-hover:text-sky-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={item.icon} />
