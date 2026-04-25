@@ -1,334 +1,310 @@
 ---
-// Banner.astro — Hero Parallax Premium (Optimizado para iOS)
+// Banner.astro — Hero Parallax Premium (Texto 100% Nítido y Fix de Scroll)
 const slides = [
-    {
-        id: 1,
-        badge: "SOMOS LÍDERES EN",
-        title: "Genética de",
-        highlight: "aves bebés",
-        description: "Calidad garantizada en cada pollito, respaldada por procesos de selección genética de vanguardia.",
-        image: "/banner/1.jpg",
-        ctaText: "Empezar Ahora",
-        ctaLink: "/productos",
-        stat: { value: "98%", label: "Tasa de supervivencia" },
-    },
-    {
-        id: 2,
-        badge: "LA MEJOR GENÉTICA",
-        title: "Aves de",
-        highlight: "postura",
-        description: "Asegura la productividad de tu negocio con aves diseñadas para el máximo rendimiento.",
-        image: "/banner/2.jpg",
-        ctaText: "Ver Catálogo",
-        ctaLink: "/nosotros",
-        stat: { value: "320+", label: "Huevos por año" },
-    },
+  {
+    id: 1,
+    badge: "SOMOS LÍDERES EN",
+    title: "Genética de",
+    highlight: "aves bebés",
+    description:
+      "Calidad garantizada en cada pollito, respaldada por procesos de selección genética de vanguardia.",
+    image: "/banner/1.webp",
+    ctaText: "Empezar Ahora",
+    ctaLink: "/productos",
+    stat: { value: "98%", label: "Tasa de supervivencia" },
+  },
+  {
+    id: 2,
+    badge: "LA MEJOR GENÉTICA",
+    title: "Aves de",
+    highlight: "postura",
+    description:
+      "Asegura la productividad de tu negocio con aves diseñadas para el máximo rendimiento.",
+    image: "/banner/2.webp",
+    ctaText: "Ver Catálogo",
+    ctaLink: "/nosotros",
+    stat: { value: "320+", label: "Huevos por año" },
+  },
 ];
 ---
 
-<section class="relative w-full h-screen bg-slate-950 overflow-hidden select-none" id="hero-banner">
-    
-    <div id="banner-container" class="relative w-full h-full overflow-hidden group">
-        
-        <div id="slider-track" class="flex h-full will-change-transform" style="cursor: grab;">
-        
-        {slides.map((slide) => (
-            <div class="slide-item w-full h-full relative flex-shrink-0 overflow-hidden">
-
-                <!-- IMAGEN DE FONDO MEJORADA -->
-                <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden bg-slate-950">
-                    <img
-                        src={slide.image}
-                        alt={slide.title}
-                        loading="lazy"
-                        decoding="async"
-                        class="parallax-bg-img w-full h-full object-cover object-center"
-                        style="opacity: 0.85; backface-visibility: hidden; -webkit-backface-visibility: hidden;"
-                    />
-                </div>
-
-                <!-- OVERLAY GRADIENTE MEJORADO PARA iOS -->
-                <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-950 via-slate-950/75 md:via-slate-950/70 to-slate-950/30 z-10 pointer-events-none will-change-auto"></div>
-                
-                <!-- OVERLAY DE COLOR SUTIL -->
-                <div class="absolute inset-0 bg-gradient-to-br from-sky-500/15 via-transparent to-amber-500/10 z-10 pointer-events-none mix-blend-multiply opacity-80"></div>
-
-                <!-- CONTENIDO PRINCIPAL -->
-                <div class="relative z-20 w-full h-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex flex-col justify-end md:justify-center pb-18 md:pb-0 md:pt-0">
-                    
-                    <div class="max-w-2xl flex flex-col gap-4 md:gap-6 will-change-auto">
-                        
-                        <!-- BADGE -->
-                        <div class="inline-flex items-center gap-0 w-fit">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/8 backdrop-blur-sm border border-white/15 text-sky-300 text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-[0.15em] shadow-[0_2px_8px_rgba(0,0,0,0.3)] will-change-auto">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" style="animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></span>
-                                {slide.badge}
-                            </span>
-                        </div>
-
-                        <!-- TÍTULO PRINCIPAL -->
-                        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-black leading-[1.1] tracking-tighter text-white m-0 font-heading drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] will-change-auto">
-                            {slide.title}<br />
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-100 to-white" style="background-attachment: fixed;">
-                                {slide.highlight}
-                            </span>
-                        </h2>
-
-                        <!-- DESCRIPCIÓN -->
-                        <p class="text-slate-300 text-sm sm:text-sm md:text-base font-medium leading-relaxed max-w-xs sm:max-w-sm md:max-w-[480px] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                            {slide.description}
-                        </p>
-
-                        <!-- CTA Y STATS -->
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 mt-2 md:mt-4">
-                            
-                            <!-- BOTÓN CTA -->
-                            <a href={slide.ctaLink} class="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 md:py-4 rounded-full overflow-hidden transition-all duration-300 active:scale-95 shadow-[0_8px_20px_rgba(14,165,233,0.25)] hover:shadow-[0_12px_30px_rgba(14,165,233,0.35)] will-change-transform" style="touch-action: manipulation;">
-                                <div class="absolute inset-0 bg-gradient-to-r from-sky-500 to-sky-400 transition-all duration-300 group-hover:from-sky-400 group-hover:to-sky-300" style="backface-visibility: hidden;"></div>
-                                <span class="relative z-10 flex items-center gap-2 text-slate-950 font-black text-xs md:text-sm uppercase tracking-widest will-change-auto">
-                                    {slide.ctaText}
-                                    <svg class="w-3.5 h-3.5 md:w-4 md:h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="stroke-linecap: round; stroke-linejoin: round; stroke-width: 3;"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                                </span>
-                            </a>
-
-                            <!-- ESTADÍSTICA -->
-                            <div class="flex flex-col gap-0 border-l-2 border-slate-600 pl-4 py-0">
-                                <span class="text-amber-300 text-xl sm:text-2xl md:text-3xl font-black leading-none will-change-auto">{slide.stat.value}</span>
-                                <span class="text-slate-400 text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider leading-tight will-change-auto">{slide.stat.label}</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
+<section
+  class="relative w-full h-screen bg-slate-950 overflow-hidden select-none"
+  id="hero-banner"
+>
+  <div
+    id="banner-container"
+    class="relative w-full h-full overflow-hidden group"
+  >
+    <div id="slider-track" class="flex h-full" style="cursor: grab;">
+      {
+        slides.map((slide) => (
+          <div class="slide-item w-full h-full relative flex-shrink-0 overflow-hidden">
+            <div class="absolute inset-0 w-full h-[130%] top-[-15%] pointer-events-none overflow-hidden bg-slate-950">
+              <img
+                src={slide.image}
+                alt={slide.title}
+                loading="eager"
+                decoding="sync"
+                class="parallax-bg-img w-full h-full object-cover object-center opacity-0 scale-105 [.is-loaded_&]:opacity-80 [.is-loaded_&]:scale-100 transition-all duration-[2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+              />
             </div>
-        ))}
-        </div>
 
-        <!-- BARRA DE PROGRESO -->
-        <div class="absolute bottom-0 left-0 w-full h-0.5 bg-white/15 z-40 will-change-auto">
-            <div id="progress-bar" class="h-full w-0 bg-gradient-to-r from-sky-400 via-sky-300 to-amber-300 shadow-[0_0_10px_rgba(56,189,248,0.8)]" style="will-change: width;"></div>
-        </div>
+            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-950 via-slate-950/75 md:via-slate-950/70 to-slate-950/30 z-10 pointer-events-none" />
+
+            <div class="absolute inset-0 bg-gradient-to-br from-sky-500/15 via-transparent to-amber-500/10 z-10 pointer-events-none mix-blend-multiply opacity-80" />
+
+            <div class="relative z-20 w-full h-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex flex-col justify-end md:justify-center pb-20 md:pb-0 md:pt-0">
+              <div class="max-w-2xl flex flex-col gap-4 md:gap-6">
+                <div class="inline-flex items-center gap-0 w-fit opacity-0 translate-y-6 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-y-0 transition-all duration-[1s] ease-[cubic-bezier(0.16,1,0.3,1)] delay-300">
+                  <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-sky-300 text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-[0.15em] shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0 animate-pulse" />
+                    {slide.badge}
+                  </span>
+                </div>
+
+                <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-black leading-[1.1] tracking-tighter text-white m-0 font-heading drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] opacity-0 translate-y-8 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-y-0 transition-all duration-[1s] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[450ms]">
+                  {slide.title}
+                  <br />
+                  <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-100 to-white">
+                    {slide.highlight}
+                  </span>
+                </h2>
+
+                <p class="text-slate-300 text-sm sm:text-sm md:text-base font-medium leading-relaxed max-w-xs sm:max-w-sm md:max-w-[480px] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] opacity-0 translate-y-8 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-y-0 transition-all duration-[1s] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[600ms]">
+                  {slide.description}
+                </p>
+
+                <div class="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-8 mt-2 md:mt-4 opacity-0 translate-y-8 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-y-0 transition-all duration-[1s] ease-[cubic-bezier(0.16,1,0.3,1)] delay-[750ms]">
+                  <a
+                    href={slide.ctaLink}
+                    class="group relative inline-flex items-center justify-center px-8 py-3 md:py-4 rounded-full overflow-hidden transition-all duration-300 active:scale-95 shadow-[0_8px_20px_rgba(14,165,233,0.25)] hover:shadow-[0_12px_30px_rgba(14,165,233,0.35)]"
+                  >
+                    <div class="absolute inset-0 bg-gradient-to-r from-sky-500 to-sky-400 transition-all duration-300 group-hover:from-sky-400 group-hover:to-sky-300" />
+                    <span class="relative z-10 flex items-center gap-2 text-slate-950 font-black text-xs md:text-sm uppercase tracking-widest">
+                      {slide.ctaText}
+                      <svg
+                        class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                      >
+                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </span>
+                  </a>
+
+                  <div class="flex flex-col gap-0 border-l-2 border-slate-600 pl-4 py-0">
+                    <span class="text-amber-300 text-xl sm:text-2xl md:text-3xl font-black leading-none">
+                      {slide.stat.value}
+                    </span>
+                    <span class="text-slate-400 text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider leading-tight">
+                      {slide.stat.label}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
     </div>
+
+    <div class="absolute bottom-0 left-0 w-full h-1 bg-white/10 z-40">
+      <div
+        id="progress-bar"
+        class="h-full w-0 bg-gradient-to-r from-sky-400 via-sky-300 to-amber-300 shadow-[0_0_10px_rgba(56,189,248,0.8)]"
+      >
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap');
-    
-    .font-heading { 
-        font-family: 'Nunito', sans-serif;
-    }
+  @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap");
 
-    /* Aceleración por hardware para el Parallax */
-    .parallax-bg-img {
-        will-change: transform;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        transform: translate3d(0, 0, 0);
-        -webkit-transform: translate3d(0, 0, 0);
-    }
+  .font-heading {
+    font-family: "Nunito", sans-serif;
+  }
 
-    /* Animación de pulso mejorada para iOS */
-    @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.6; }
-    }
-
-    /* Fix para texto con clip-path en iOS */
-    span[style*="bg-clip-text"] {
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    /* Fix para escala en hover en móvil */
-    @media (hover: none) and (pointer: coarse) {
-        a {
-            transform: scale(1) !important;
-        }
-        
-        a:active {
-            transform: scale(0.95) !important;
-            transition: transform 150ms ease-out;
-        }
-    }
-
-    /* Mejorar rendering de imágenes en Safari */
-    img {
-        image-rendering: -webkit-optimize-contrast;
-        -webkit-user-select: none;
-        user-select: none;
-    }
-
-    /* Fix para hardware acceleration en iOS */
-    #slider-track {
-        transform: translate3d(0, 0, 0);
-        -webkit-transform: translate3d(0, 0, 0);
-    }
-
-    /* Reducir motion para iOS si está habilitado */
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            animation: none !important;
-            transition: none !important;
-        }
-    }
-
-    /* Asegurar que los gradientes se renderizan bien */
-    div[style*="background-attachment"] {
-        -webkit-background-clip: text;
-        background-clip: text;
-    }
+  /* Solo aceleramos la imagen de fondo para el parallax, manteniendo el texto intacto */
+  .parallax-bg-img {
+    will-change: transform;
+  }
 </style>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        
-        const track       = document.getElementById("slider-track") as HTMLElement | null;
-        const progressBar = document.getElementById("progress-bar") as HTMLElement | null;
-        const section     = document.getElementById("hero-banner") as HTMLElement | null;
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("slider-track") as HTMLElement | null;
+    const progressBar = document.getElementById(
+      "progress-bar",
+    ) as HTMLElement | null;
+    const section = document.getElementById(
+      "hero-banner",
+    ) as HTMLElement | null;
+    const container = document.getElementById(
+      "banner-container",
+    ) as HTMLElement | null;
 
-        if (!track || !progressBar || !section) return;
+    if (!track || !progressBar || !section || !container) return;
 
-        // 1. LÓGICA DEL SLIDER MEJORADA PARA iOS
-        let currentIndex  = 0;
-        const totalSlides = track.children.length;
-        let timer: ReturnType<typeof setInterval> | null = null;
-        let dragging = false;
-        let startX   = 0;
-        let isDragging = false;
+    // 1. INICIALIZAR ANIMACIÓN DE CARGA
+    // Esto desencadena el fade-in de los textos 100ms después de cargar la página
+    setTimeout(() => {
+      container.classList.add("is-loaded");
+    }, 100);
 
-        const go = (animated = true) => {
-            if (animated) {
-                track.style.transition = "transform 0.8s cubic-bezier(0.25, 1, 0.35, 1)";
-            } else {
-                track.style.transition = "none";
-            }
-            
-            track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
-            
-            // Reset progress bar
-            progressBar.style.transition = "none";
-            progressBar.style.width = "0%";
-            
-            setTimeout(() => {
-                progressBar.style.transition = "width 5000ms linear";
-                progressBar.style.width = "100%";
-            }, 50);
-        };
+    // 2. LÓGICA DEL SLIDER
+    let currentIndex = 0;
+    const totalSlides = track.children.length;
+    let timer: ReturnType<typeof setInterval> | null = null;
+    let dragging = false;
+    let startX = 0;
+    let isDragging = false;
 
-        const next  = () => { 
-            if (!isDragging) {
-                currentIndex = (currentIndex + 1) % totalSlides; 
-                go(true); 
-            }
-        };
-        
-        const prev  = () => { 
-            if (!isDragging) {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; 
-                go(true); 
-            }
-        };
-        
-        const reset = () => { 
-            if (timer) clearInterval(timer); 
-            timer = setInterval(next, 5000); 
-        };
+    const go = (animated = true) => {
+      if (animated) {
+        track.style.transition =
+          "transform 0.8s cubic-bezier(0.25, 1, 0.35, 1)";
+      } else {
+        track.style.transition = "none";
+      }
 
-        const onStart = (e: MouseEvent | TouchEvent) => {
-            isDragging = true;
-            dragging = true;
-            startX = e instanceof MouseEvent ? e.pageX : (e as TouchEvent).touches[0].pageX;
-            track.style.transition = "none";
-            if (timer) clearInterval(timer);
-        };
+      track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
 
-        const onMove = (e: MouseEvent | TouchEvent) => {
-            if (!isDragging || !dragging) return;
-            
-            const x = e instanceof MouseEvent ? e.pageX : (e as TouchEvent).touches[0].pageX;
-            const pct = ((x - startX) / track.offsetWidth) * 100;
-            track.style.transform = `translate3d(calc(-${currentIndex * 100}% + ${pct}%), 0, 0)`;
-        };
+      // Reset progress bar
+      progressBar.style.transition = "none";
+      progressBar.style.width = "0%";
 
-        const onEnd = (e: MouseEvent | TouchEvent) => {
-            if (!isDragging) return;
-            isDragging = false;
-            dragging = false;
-            
-            const ex = e instanceof MouseEvent ? e.pageX : (e as TouchEvent).changedTouches[0].pageX;
-            const moved = ex - startX;
-            
-            if (Math.abs(moved) > 50) {
-                if (moved < 0) next();
-                else prev();
-            } else {
-                go(true);
-            }
-            
-            reset();
-        };
+      setTimeout(() => {
+        progressBar.style.transition = "width 5000ms linear";
+        progressBar.style.width = "100%";
+      }, 50);
+    };
 
-        // Event listeners mejorados para iOS
-        track.addEventListener("mousedown", onStart as EventListener, { passive: false });
-        track.addEventListener("touchstart", onStart as EventListener, { passive: true });
-        
-        window.addEventListener("mousemove", onMove as EventListener, { passive: true });
-        track.addEventListener("touchmove", onMove as EventListener, { passive: true });
-        
-        window.addEventListener("mouseup", onEnd as EventListener);
-        track.addEventListener("touchend", onEnd as EventListener, { passive: true });
+    const next = () => {
+      if (!isDragging) {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        go(true);
+      }
+    };
 
-        // Prevenir comportamiento predeterminado en iOS
-        track.addEventListener("gesturestart", (e) => {
-            e.preventDefault();
-        });
+    const prev = () => {
+      if (!isDragging) {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        go(true);
+      }
+    };
 
-        go(false);
-        timer = setInterval(next, 5000);
-        
-        window.addEventListener("resize", () => {
-            if (!isDragging) {
-                track.style.transition = "none";
-                track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
-            }
-        }, { passive: true });
+    const reset = () => {
+      if (timer) clearInterval(timer);
+      timer = setInterval(next, 5000);
+    };
 
-        // 2. PARALLAX PARA LA IMAGEN (Optimizado para iOS)
-        const parallaxImages = document.querySelectorAll('.parallax-bg-img') as NodeListOf<HTMLElement>;
-        let ticking = false;
+    const onStart = (e: MouseEvent | TouchEvent) => {
+      isDragging = true;
+      dragging = true;
+      startX =
+        e instanceof MouseEvent ? e.pageX : (e as TouchEvent).touches[0].pageX;
+      track.style.transition = "none";
+      if (timer) clearInterval(timer);
+    };
 
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
-                    const sectionHeight = section.offsetHeight;
+    const onMove = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging || !dragging) return;
 
-                    // Solo animamos si el banner está visible
-                    if (scrollY <= sectionHeight) {
-                        const yOffset = scrollY * 0.4;
-                        
-                        parallaxImages.forEach((img) => {
-                            img.style.transform = `translate3d(0, ${yOffset}px, 0)`;
-                        });
-                    }
+      const x =
+        e instanceof MouseEvent ? e.pageX : (e as TouchEvent).touches[0].pageX;
+      const pct = ((x - startX) / track.offsetWidth) * 100;
+      track.style.transform = `translate3d(calc(-${currentIndex * 100}% + ${pct}%), 0, 0)`;
+    };
 
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
+    const onEnd = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
+      isDragging = false;
+      dragging = false;
 
-        // Limpiar event listeners en unmount (si es necesario)
-        return () => {
-            if (timer) clearInterval(timer);
-            track.removeEventListener("mousedown", onStart as EventListener);
-            track.removeEventListener("touchstart", onStart as EventListener);
-            window.removeEventListener("mousemove", onMove as EventListener);
-            track.removeEventListener("touchmove", onMove as EventListener);
-            window.removeEventListener("mouseup", onEnd as EventListener);
-            track.removeEventListener("touchend", onEnd as EventListener);
-        };
+      const ex =
+        e instanceof MouseEvent
+          ? e.pageX
+          : (e as TouchEvent).changedTouches[0].pageX;
+      const moved = ex - startX;
+
+      if (Math.abs(moved) > 50) {
+        if (moved < 0) next();
+        else prev();
+      } else {
+        go(true);
+      }
+
+      reset();
+    };
+
+    // Event listeners
+    track.addEventListener("mousedown", onStart as EventListener, {
+      passive: false,
     });
+    track.addEventListener("touchstart", onStart as EventListener, {
+      passive: true,
+    });
+
+    window.addEventListener("mousemove", onMove as EventListener, {
+      passive: true,
+    });
+    track.addEventListener("touchmove", onMove as EventListener, {
+      passive: true,
+    });
+
+    window.addEventListener("mouseup", onEnd as EventListener);
+    track.addEventListener("touchend", onEnd as EventListener, {
+      passive: true,
+    });
+
+    go(false);
+    timer = setInterval(next, 5000);
+
+    window.addEventListener(
+      "resize",
+      () => {
+        if (!isDragging) {
+          track.style.transition = "none";
+          track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
+        }
+      },
+      { passive: true },
+    );
+
+    // 3. PARALLAX PARA LA IMAGEN (Totalmente independiente del texto)
+    const parallaxImages = document.querySelectorAll(
+      ".parallax-bg-img",
+    ) as NodeListOf<HTMLElement>;
+    let ticking = false;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            const sectionHeight = section.offsetHeight;
+
+            if (scrollY <= sectionHeight) {
+              const yOffset = scrollY * 0.4;
+
+              parallaxImages.forEach((img) => {
+                img.style.transform = `translate3d(0, ${yOffset}px, 0)`;
+              });
+            }
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
+  });
 </script>

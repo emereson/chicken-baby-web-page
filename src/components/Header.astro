@@ -1,111 +1,219 @@
 ---
 // Header.astro - Dark Mode Premium (Acentos Ámbar y Celeste)
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
+const currentPath = pathname === "/" ? "/" : pathname.replace(/\/$/, "");
 
 const navItems = [
-  { name: 'Inicio', path: '/', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>` },
-  { name: 'Nosotros', path: '/nosotros', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>` },
-  { name: 'Productos', path: '/productos', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>` },
-  { name: 'Galeria', path: '/galeria', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>` }
+  {
+    name: "Inicio",
+    path: "/",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>`,
+  },
+  {
+    name: "Nosotros",
+    path: "/nosotros",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>`,
+  },
+  {
+    name: "Productos",
+    path: "/productos",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>`,
+  },
+  {
+    name: "Galeria",
+    path: "/galeria",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>`,
+  },
 ];
 ---
 
-<header id="main-header" class="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
-  
+<header
+  id="main-header"
+  class="fixed top-2 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none"
+>
   <div class="pointer-events-auto w-full max-w-6xl relative">
-
-    <nav class="relative w-full 
+    <nav
+      class="relative w-full
       bg-slate-950/70 backdrop-blur-xl backdrop-saturate-150
       border border-sky-500/10 hover:border-sky-500/30 transition-colors duration-500
       shadow-[0_8px_30px_rgb(0,0,0,0.5)]
-      rounded-2xl px-4 md:px-6 py-2.5 flex justify-between items-center 
-      opacity-0 -translate-y-4 
-      [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-y-0 
-      transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
-
-      <a href="/" class="relative z-10 group flex items-center  opacity-0 -translate-x-2 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-x-0 transition-all duration-700 delay-300">
-        <img src="/logo2.png" alt="Logo" class="h-10 md:h-9 w-auto transition-transform duration-500 group-hover:scale-105" />
+      rounded-2xl px-4 md:px-6 py-2.5 flex justify-between items-center
+      opacity-0 -translate-y-4
+      in-[.is-loaded]:opacity-100 in-[.is-loaded]:translate-y-0 ease-[cubic-bezier(0.16,1,0.3,1)]"
+    >
+      <a
+        href="/"
+        class="relative z-10 group flex items-center opacity-0 -translate-x-2 in-[.is-loaded]:opacity-100 in-[.is-loaded]:translate-x-0 transition-all duration-700 delay-300"
+      >
+        <img
+          src="/logo2.webp"
+          alt="Logo"
+          class="h-10 md:h-10 w-auto transition-transform duration-500 group-hover:scale-105"
+        />
       </a>
 
-      <ul class="relative z-10 hidden md:flex space-x-1 lg:space-x-2 items-center text-[13px] font-semibold tracking-tight">
-        {navItems.map((item, index) => {
-          const active = currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path));
-          const delay = 400 + (index * 75);
+      <ul
+        class="relative z-10 hidden md:flex space-x-1 lg:space-x-2 items-center text-[13px] font-semibold tracking-tight"
+      >
+        {
+          navItems.map((item, index) => {
+            const active =
+              currentPath === item.path ||
+              (item.path !== "/" && currentPath.startsWith(item.path));
+            const delay = 400 + index * 75;
 
-          return (
-            <li class="opacity-0 -translate-y-2 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-y-0 transition-all duration-700 ease-out" style={`transition-delay: ${delay}ms`}>
-              <a href={item.path} class={`text-sm relative px-4 py-2 transition-all duration-300 flex items-center gap-1.5 rounded-xl overflow-hidden group/item 
-              ${active ? 'text-white bg-sky-500/10' : 'text-slate-300 hover:text-white hover:bg-sky-500/5'}`}>
-                
-                <svg class={`w-4 h-4 transition-transform duration-300 group-hover/item:-translate-y-0.5 
-                ${active ? 'text-amber-400' : 'text-slate-400 group-hover/item:text-sky-400'}`} 
-                fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={item.icon} />
-                
-                <span>{item.name}</span>
-                
-                <span class={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2.5px] transition-all duration-300 rounded-t-md 
-                ${active ? 'bg-amber-400 w-[70%] opacity-100' : 'bg-sky-400 w-0 opacity-0 group-hover/item:w-[70%] group-hover/item:opacity-100'}`}></span>
-              </a>
-            </li>
-          );
-        })}
+            return (
+              <li
+                class="opacity-0 -translate-y-2 in-[.is-loaded]:opacity-100 in-[.is-loaded]:translate-y-0 transition-all duration-700 ease-out"
+                style={`transition-delay: ${delay}ms`}
+              >
+                <a
+                  href={item.path}
+                  class={`text-md relative px-4 py-2 transition-all duration-300 flex items-center gap-1.5 rounded-xl overflow-hidden group/item 
+              ${active ? "text-white bg-sky-500/10" : "text-slate-300 hover:text-white hover:bg-sky-500/5"}`}
+                >
+                  <svg
+                    class={`w-4 h-4 transition-transform duration-300 group-hover/item:-translate-y-0.5 
+                ${active ? "text-amber-400" : "text-slate-400 group-hover/item:text-sky-400"}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    set:html={item.icon}
+                  />
 
-        <div class="h-4 w-[2px] bg-sky-500/20 mx-2 opacity-0 [.is-loaded_&]:opacity-100 transition-opacity duration-700 delay-700 rounded-full"></div>
+                  <span>{item.name}</span>
 
-        <li class="pl-2 opacity-0 translate-x-2 [.is-loaded_&]:opacity-100 [.is-loaded_&]:translate-x-0 transition-all duration-700 delay-[800ms] ease-out">
-          
-          <a href="/contacto" class="group relative inline-flex items-center justify-center h-10 px-6 rounded-xl transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0.5 hover:shadow-[0_10px_20px_-5px_rgba(14,165,233,0.3)] overflow-hidden border border-sky-500/30 hover:border-transparent">
-            
-            <div class="absolute inset-0 bg-slate-800/80 transition-opacity duration-300 group-hover:opacity-0"></div>
-            
-            <div class="absolute inset-0 bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-gradient-x shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.3)]"></div>
-            
-            <span class="relative z-10 flex items-center gap-2 text-sky-100 text-[12px] font-bold tracking-wide transition-all duration-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)] group-active:scale-95 group-hover:text-slate-900 group-hover:drop-shadow-none">
+                  <span
+                    class={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2.5px] transition-all duration-300 rounded-t-md 
+                ${active ? "bg-amber-400 w-[70%] opacity-100" : "bg-sky-400 w-0 opacity-0 group-hover/item:w-[70%] group-hover/item:opacity-100"}`}
+                  />
+                </a>
+              </li>
+            );
+          })
+        }
+
+        <div
+          class="h-4 w-0.5 bg-sky-500/20 mx-2 opacity-0 in-[.is-loaded]:opacity-100 transition-opacity duration-700 delay-700 rounded-full"
+        >
+        </div>
+
+        <li
+          class="pl-2 opacity-0 translate-x-2 in-[.is-loaded]:opacity-100 in-[.is-loaded]:translate-x-0 transition-all duration-700 delay-800 ease-out"
+        >
+          <a
+            href="/contacto"
+            class="group relative inline-flex items-center justify-center h-10 px-6 rounded-xl transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0.5 hover:shadow-[0_10px_20px_-5px_rgba(14,165,233,0.3)] overflow-hidden border border-sky-500/30 hover:border-transparent"
+          >
+            <div
+              class="absolute inset-0 bg-slate-800/80 transition-opacity duration-300 group-hover:opacity-0"
+            >
+            </div>
+
+            <div
+              class="absolute inset-0 bg-linear-to-r from-amber-400 via-yellow-500 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-gradient-x shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.3)]"
+            >
+            </div>
+
+            <span
+              class="relative z-10 flex items-center gap-2 text-sky-100 text-[12px] font-bold tracking-wide transition-all duration-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)] group-active:scale-95 group-hover:text-slate-900 group-hover:drop-shadow-none"
+            >
               Contacto
-              <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              <svg
+                class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
               </svg>
             </span>
           </a>
-
         </li>
       </ul>
 
-      <button id="mobile-menu-btn" class="relative z-10 md:hidden p-2 text-slate-300 hover:text-sky-400 bg-white/5 hover:bg-sky-500/10 rounded-xl transition-colors opacity-0 [.is-loaded_&]:opacity-100 duration-1000 delay-[600ms] border border-transparent hover:border-sky-500/20">
-        <svg id="icon-menu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <svg id="icon-close" class="hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      <button
+        id="mobile-menu-btn"
+        class="relative z-10 md:hidden p-2 text-slate-300 hover:text-sky-400 bg-white/5 hover:bg-sky-500/10 rounded-xl transition-colors opacity-0 in-[.is-loaded]:opacity-100 duration-1000 delay-600 border border-transparent hover:border-sky-500/20"
+      >
+        <svg
+          id="icon-menu"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path></svg
+        >
+        <svg
+          id="icon-close"
+          class="hidden w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path></svg
+        >
       </button>
-
     </nav>
 
-    <div id="mobile-menu" class="absolute top-full left-0 right-0 mt-3 overflow-hidden rounded-2xl md:hidden opacity-0 -translate-y-4 pointer-events-none transition-all duration-400 bg-slate-950/80 backdrop-blur-3xl border border-sky-500/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
-      
+    <div
+      id="mobile-menu"
+      class="absolute top-full left-0 right-0 mt-3 overflow-hidden rounded-2xl md:hidden opacity-0 -translate-y-4 pointer-events-none transition-all duration-400 bg-slate-950/80 backdrop-blur-3xl border border-sky-500/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+    >
       <ul class="relative z-10 p-4 flex flex-col space-y-1">
-        {navItems.map((item) => {
-          const active = currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path));
-          return (
-            <li>
-              <a href={item.path} class={` relative flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all overflow-hidden group 
-              ${active ? 'text-white bg-sky-500/10' : 'text-slate-300 hover:text-white hover:bg-sky-500/5'}`}>
-                
-                <svg class={`w-5 h-5 transition-colors ${active ? 'text-amber-400' : 'text-slate-400 group-hover:text-sky-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={item.icon} />
-                {item.name}
+        {
+          navItems.map((item) => {
+            const active =
+              currentPath === item.path ||
+              (item.path !== "/" && currentPath.startsWith(item.path));
+            return (
+              <li>
+                <a
+                  href={item.path}
+                  class={` relative flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all overflow-hidden group 
+              ${active ? "text-white bg-sky-500/10" : "text-slate-300 hover:text-white hover:bg-sky-500/5"}`}
+                >
+                  <svg
+                    class={`w-5 h-5 transition-colors ${active ? "text-amber-400" : "text-slate-400 group-hover:text-sky-400"}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    set:html={item.icon}
+                  />
+                  {item.name}
 
-                <span class={`absolute left-0 top-1/2 -translate-y-1/2 w-[3px] transition-all duration-300 rounded-r-md ${active ? 'bg-amber-400 h-[60%] opacity-100' : 'bg-sky-400 h-0 opacity-0 group-hover:h-[60%] group-hover:opacity-100'}`}></span>
-              </a>
-            </li>
-          );
-        })}
+                  <span
+                    class={`absolute left-0 top-1/2 -translate-y-1/2 w-0.75 transition-all duration-300 rounded-r-md ${active ? "bg-amber-400 h-[60%] opacity-100" : "bg-sky-400 h-0 opacity-0 group-hover:h-[60%] group-hover:opacity-100"}`}
+                  />
+                </a>
+              </li>
+            );
+          })
+        }
       </ul>
     </div>
-
   </div>
 </header>
 <style>
   @keyframes gradient-x {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
   .animate-gradient-x {
     background-size: 200% auto;
@@ -116,42 +224,58 @@ const navItems = [
 <script>
   // Se mantiene exactamente igual
   document.addEventListener("DOMContentLoaded", () => {
-    const header = document.getElementById('main-header');
+    const header = document.getElementById("main-header");
     if (header) {
       setTimeout(() => {
-        header.classList.add('is-loaded');
+        header.classList.add("is-loaded");
       }, 100);
     }
   });
 
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const iconMenu = document.getElementById('icon-menu');
-  const iconClose = document.getElementById('icon-close');
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const iconMenu = document.getElementById("icon-menu");
+  const iconClose = document.getElementById("icon-close");
   let isOpen = false;
 
-  btn?.addEventListener('click', () => {
+  btn?.addEventListener("click", () => {
     isOpen = !isOpen;
     if (isOpen) {
-      menu?.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
-      menu?.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
-      iconMenu?.classList.add('hidden');
-      iconClose?.classList.remove('hidden');
+      menu?.classList.remove(
+        "opacity-0",
+        "-translate-y-4",
+        "pointer-events-none",
+      );
+      menu?.classList.add(
+        "opacity-100",
+        "translate-y-0",
+        "pointer-events-auto",
+      );
+      iconMenu?.classList.add("hidden");
+      iconClose?.classList.remove("hidden");
     } else {
-      menu?.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
-      menu?.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-      iconClose?.classList.add('hidden');
-      iconMenu?.classList.remove('hidden');
+      menu?.classList.add("opacity-0", "-translate-y-4", "pointer-events-none");
+      menu?.classList.remove(
+        "opacity-100",
+        "translate-y-0",
+        "pointer-events-auto",
+      );
+      iconClose?.classList.add("hidden");
+      iconMenu?.classList.remove("hidden");
     }
   });
 
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
+  document.querySelectorAll("#mobile-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
       isOpen = false;
-      menu?.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
-      menu?.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-      iconClose?.classList.add('hidden');
-      iconMenu?.classList.remove('hidden');
+      menu?.classList.add("opacity-0", "-translate-y-4", "pointer-events-none");
+      menu?.classList.remove(
+        "opacity-100",
+        "translate-y-0",
+        "pointer-events-auto",
+      );
+      iconClose?.classList.add("hidden");
+      iconMenu?.classList.remove("hidden");
     });
   });
 </script>

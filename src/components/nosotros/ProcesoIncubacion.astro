@@ -1,0 +1,413 @@
+---
+// ProcesoIncubacion.astro — Master Palette (Amarillo, Slate-900, Celeste, Blanco)
+const procesos = [
+  {
+    id: "planta",
+    tabTitle: "Planta de incubación",
+    icon: `<path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>`,
+    title: "Planta de incubación",
+    items: [
+      {
+        text: "Control de clima",
+        desc: "Monitoreo estricto de temperatura y humedad en tiempo real.",
+      },
+      {
+        text: "Alta tecnología",
+        desc: "Equipamiento automatizado de última generación.",
+      },
+      {
+        text: "Monitoreo 24/7",
+        desc: "Ambiente 100% controlado, esterilizado y seguro.",
+      },
+    ],
+    image: "/banner/6.webp",
+  },
+  {
+    id: "vacunas",
+    tabTitle: "Nuestras vacunas",
+    icon: `<path d="M19 13h-6v6h-2v-6h-6v-2h6v-6h2v6h6v2z"/>`,
+    title: "Nuestras vacunas",
+    items: [
+      {
+        text: "Marek Gumboro",
+        desc: "Protección inmunológica desde el primer día.",
+      },
+      {
+        text: "Newcastle Bronquitis",
+        desc: "Prevención integral contra enfermedades respiratorias.",
+      },
+      {
+        text: "Programa a medida",
+        desc: "Vacunación adicional en planta según requerimientos de zonificación.",
+      },
+    ],
+    image: "/banner/4.webp",
+  },
+  {
+    id: "controles",
+    tabTitle: "Controles de calidad",
+    icon: `<path d="M1 21h4V9H1v12zm22-10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/>`,
+    title: "Controles estrictos",
+    items: [
+      {
+        text: "Evaluación física",
+        desc: "Revisión detallada de la vitalidad y conformación del pollito BB.",
+      },
+      {
+        text: "Pesaje automatizado",
+        desc: "Control de uniformidad para garantizar lotes parejos.",
+      },
+      {
+        text: "Bioseguridad",
+        desc: "Certificación de estándares sanitarios antes de cada despacho.",
+      },
+    ],
+    image: "/banner/5.webp",
+  },
+];
+---
+
+<section
+  class="bg-white pb-24 md:p-24 overflow-hidden select-none relative pt-0"
+  id="proceso-section"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div
+      class="max-w-6xl mx-auto mb-20 md:mb-28 mt-8 flex flex-col md:flex-row items-start justify-between gap-10 reveal-element opacity-0 translate-y-12 transition-all duration-[1s] ease-out"
+    >
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-4">
+          <span class="w-12 h-1 bg-sky-500 rounded-r-full"></span>
+          <h3
+            class="text-sky-500 font-black tracking-[0.25em] text-xs md:text-sm uppercase"
+          >
+            Conoce Más Sobre
+          </h3>
+        </div>
+
+        <h2
+          class="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[1.05] font-heading"
+        >
+          Nuestro proceso <br class="hidden md:block" />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-sky-300"
+          >
+            de incubación.
+          </span>
+        </h2>
+      </div>
+
+      <div class="hidden md:flex shrink-0">
+        <div class="relative w-32 h-32 flex items-center justify-center">
+          <svg
+            class="absolute inset-0 w-full h-full animate-[spin_10s_linear_infinite] text-slate-300"
+            viewBox="0 0 100 100"
+          >
+            <path
+              d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
+              id="circle"
+              fill="none"></path>
+            <text
+              class="text-[12px] font-bold uppercase tracking-[0.3em]"
+              fill="currentColor"
+            >
+              <textPath href="#circle">
+                • Calidad Certificada • Tecnología Avícola
+              </textPath>
+            </text>
+          </svg>
+          <div
+            class="absolute w-16 h-16 lg:w-20 lg:h-20 bg-slate-900 rounded-full border-4 border-white shadow-xl flex items-center justify-center text-amber-400"
+          >
+            <svg
+              class="w-8 h-8 lg:w-10 lg:h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative w-full mt-10 md:mt-16 max-w-6xl mx-auto">
+      <div class="absolute -top-16 left-0 right-0 z-30 px-4 md:px-12">
+        <div
+          class="grid grid-cols-3 gap-3 md:gap-6 reveal-element opacity-0 translate-y-12 transition-all duration-[1s] ease-out delay-200"
+        >
+          {
+            procesos.map((proceso, index) => {
+              const isActive = index === 1; // La segunda activa por defecto
+              return (
+                <button
+                  data-tab={proceso.id}
+                  class={`tab-btn relative flex flex-col items-center justify-center text-center p-4 md:p-6 rounded-2xl md:rounded-[2rem] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group shadow-2xl
+                            ${isActive ? "bg-slate-900 text-white shadow-[0_20px_40px_rgba(15,23,42,0.3)] scale-105 z-10 translate-y-[-10px]" : "bg-white text-slate-500 shadow-xl border border-slate-100 hover:-translate-y-2 hover:text-slate-900"}`}
+                >
+                  <div
+                    class={`w-8 h-8 md:w-12 md:h-12 mb-2 md:mb-4 flex items-center justify-center transition-colors duration-500 ${isActive ? "text-amber-400" : "text-sky-500 group-hover:text-sky-400"}`}
+                  >
+                    <svg
+                      class="w-full h-full"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      set:html={proceso.icon}
+                    />
+                  </div>
+                  <span class="text-[10px] sm:text-xs md:text-sm font-black font-heading tracking-wider uppercase leading-tight md:leading-normal">
+                    {proceso.tabTitle}
+                  </span>
+
+                  <div
+                    class={`tab-arrow absolute -bottom-3 md:-bottom-4 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] md:border-l-[16px] border-l-transparent border-r-[12px] md:border-r-[16px] border-r-transparent border-t-[12px] md:border-t-[16px] border-t-slate-900 transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`}
+                  />
+                </button>
+              );
+            })
+          }
+        </div>
+      </div>
+
+      <div
+        class="grid w-full relative pt-12 md:pt-20 reveal-element opacity-0 translate-y-16 transition-all duration-[1.2s] ease-out delay-400"
+      >
+        {
+          procesos.map((proceso, index) => {
+            const isActive = index === 1;
+
+            return (
+              <article
+                data-panel={proceso.id}
+                class={`panel-content col-start-1 row-start-1 transition-all duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)] w-full
+                        ${isActive ? "opacity-100 z-20 translate-y-0 scale-100 pointer-events-auto" : "opacity-0 z-0 translate-y-12 scale-[0.98] pointer-events-none"}`}
+              >
+                <div class="relative overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] bg-slate-900/90 backdrop-blur-3xl backdrop-saturate-[180%] border border-white/10 shadow-[0_30px_60px_rgba(15,23,42,0.4)] p-8 md:p-12 lg:p-16">
+                  <div class="absolute -inset-20 z-0 opacity-30 blur-3xl pointer-events-none bg-gradient-to-tr from-sky-500/40 via-transparent to-amber-400/20" />
+
+                  <div class="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-16 items-center pt-8 md:pt-4">
+                    <div class="w-full lg:w-[45%] h-[300px] md:h-[400px] lg:h-[480px] rounded-[2rem] overflow-hidden shadow-2xl relative order-2 lg:order-1 group/img">
+                      <div class="absolute inset-0 border-4 border-white/10 rounded-[2rem] z-20 pointer-events-none" />
+                      <div class="parallax-img-container w-full h-[120%] -top-[10%] absolute inset-0 transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)] z-10">
+                        <img
+                          src={proceso.image}
+                          alt={proceso.title}
+                          class="w-full h-full object-cover transition-transform duration-[2s] group-hover/img:scale-105"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="w-full lg:w-[55%] flex flex-col order-1 lg:order-2">
+                      <h3 class="text-2xl md:text-4xl font-black text-white mb-8 font-heading drop-shadow-md">
+                        {proceso.title}
+                      </h3>
+
+                      <div class="grid grid-cols-1 gap-4">
+                        {proceso.items.map((item, i) => (
+                          <div class="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-amber-400/50 transition-all duration-300 group/item">
+                            <div class="w-10 h-10 rounded-full bg-slate-950 text-amber-400 flex items-center justify-center shrink-0 border border-amber-400/30 mt-0.5 group-hover/item:scale-110 group-hover/item:bg-amber-400 group-hover/item:text-slate-900 shadow-[0_0_10px_rgba(251,191,36,0.1)] group-hover/item:shadow-[0_0_15px_rgba(251,191,36,0.4)] transition-all duration-300">
+                              <span class="font-black text-sm">{i + 1}</span>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                              <p class="text-white text-base md:text-lg font-bold drop-shadow-sm group-hover/item:text-sky-300 transition-colors">
+                                {item.text}
+                              </p>
+                              {item.desc && (
+                                <p class="text-xs md:text-sm text-slate-300 leading-relaxed font-medium">
+                                  {item.desc}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap");
+
+  .font-heading {
+    font-family: "Nunito", sans-serif;
+  }
+
+  .parallax-img-container {
+    will-change: transform;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. ANIMACIÓN REVEAL
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            el.classList.remove(
+              "opacity-0",
+              "translate-y-12",
+              "translate-y-16",
+            );
+            el.classList.add("opacity-100", "translate-y-0");
+            obs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    document
+      .querySelectorAll(".reveal-element")
+      .forEach((el) => observer.observe(el));
+
+    // 2. LÓGICA DE TABS
+    const tabs = document.querySelectorAll(".tab-btn");
+    const panels = document.querySelectorAll(".panel-content");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.getAttribute("data-tab");
+
+        // Limpiar todas las clases de las tabs
+        tabs.forEach((t) => {
+          t.classList.remove(
+            "bg-slate-900",
+            "text-white",
+            "shadow-[0_20px_40px_rgba(15,23,42,0.3)]",
+            "scale-105",
+            "z-10",
+            "translate-y-[-10px]",
+          );
+          t.classList.add(
+            "bg-white",
+            "text-slate-500",
+            "shadow-xl",
+            "border-slate-100",
+          );
+
+          const icon = t.querySelector("div");
+          icon?.classList.remove("text-amber-400");
+          icon?.classList.add("text-sky-500", "group-hover:text-sky-400");
+
+          const arrow = t.querySelector(".tab-arrow");
+          arrow?.classList.remove("opacity-100");
+          arrow?.classList.add("opacity-0");
+        });
+
+        // Aplicar clases a la tab activa
+        tab.classList.remove(
+          "bg-white",
+          "text-slate-500",
+          "shadow-xl",
+          "border-slate-100",
+        );
+        tab.classList.add(
+          "bg-slate-900",
+          "text-white",
+          "shadow-[0_20px_40px_rgba(15,23,42,0.3)]",
+          "scale-105",
+          "z-10",
+          "translate-y-[-10px]",
+        );
+
+        const activeIcon = tab.querySelector("div");
+        activeIcon?.classList.remove(
+          "text-sky-500",
+          "group-hover:text-sky-400",
+        );
+        activeIcon?.classList.add("text-amber-400");
+
+        const activeArrow = tab.querySelector(".tab-arrow");
+        activeArrow?.classList.remove("opacity-0");
+        activeArrow?.classList.add("opacity-100");
+
+        // Mostrar Panel
+        panels.forEach((panel) => {
+          if (panel.getAttribute("data-panel") === targetId) {
+            panel.classList.remove(
+              "opacity-0",
+              "z-0",
+              "translate-y-12",
+              "scale-[0.98]",
+              "pointer-events-none",
+            );
+            panel.classList.add(
+              "opacity-100",
+              "z-20",
+              "translate-y-0",
+              "scale-100",
+              "pointer-events-auto",
+            );
+          } else {
+            panel.classList.remove(
+              "opacity-100",
+              "z-20",
+              "translate-y-0",
+              "scale-100",
+              "pointer-events-auto",
+            );
+            panel.classList.add(
+              "opacity-0",
+              "z-0",
+              "translate-y-12",
+              "scale-[0.98]",
+              "pointer-events-none",
+            );
+          }
+        });
+      });
+    });
+
+    // 3. PARALLAX
+    const section = document.getElementById("proceso-section");
+    const imgContainers = document.querySelectorAll(".parallax-img-container");
+    let ticking = false;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!section) return;
+
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const rect = section.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+
+            if (rect.top < viewportHeight && rect.bottom > 0) {
+              const sectionCenter = rect.top + rect.height / 2;
+              const screenCenter = viewportHeight / 2;
+              const distance =
+                (sectionCenter - screenCenter) / (viewportHeight / 1.5);
+
+              imgContainers.forEach((container) => {
+                if (container instanceof HTMLElement) {
+                  const yOffset = Math.max(Math.min(distance * 12, 12), -12);
+                  container.style.transform = `translate3d(0, ${yOffset}%, 0)`;
+                }
+              });
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
+  });
+</script>

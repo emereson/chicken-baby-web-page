@@ -1,0 +1,493 @@
+---
+// ListaProductos.astro — Badges, Watermarks & WhatsApp CTA
+const productos = [
+  {
+    id: "ross-308",
+    layout: "split-right",
+    badge: "Línea Premium",
+    title: "Ross 308 AP",
+    description:
+      "El pollo de engorde líder en el mundo. Destaca por su rápido crecimiento, eficiencia alimenticia incomparable y excelente rendimiento de carne.",
+    features: [
+      {
+        text: "Ganancia de peso diaria superior.",
+        icon: `<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>`,
+      },
+      {
+        text: "Excelente conversión alimenticia.",
+        icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`,
+      },
+    ],
+    images: ["/banner/1.webp", "/banner/2.webp", "/banner/3.webp"],
+    waLink:
+      "https://wa.me/51900000000?text=Hola,%20deseo%20cotizar%20pollitos%20Ross%20308%20AP",
+  },
+  {
+    id: "criollos-mejorados",
+    layout: "split-left",
+    badge: "Doble Propósito",
+    title: "Criollos Mejorados",
+    description:
+      "Aves rústicas con genética optimizada. Perfectas para sistemas de crianza tradicional, destacando por el sabor de su carne y resistencia.",
+    features: [
+      {
+        text: "Alta resistencia inmunológica.",
+        icon: `<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>`,
+      },
+      {
+        text: "Carne de sabor tradicional.",
+        icon: `<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>`,
+      },
+    ],
+    images: ["/banner/4.webp", "/banner/5.webp", "/banner/6.webp"],
+    waLink:
+      "https://wa.me/51900000000?text=Hola,%20deseo%20cotizar%20Criollos%20Mejorados",
+  },
+  {
+    id: "cobb-500",
+    layout: "card",
+    badge: "Alta Eficiencia",
+    title: "Cobb 500",
+    description:
+      "El pollo parrillero más eficiente. Reconocido globalmente por tener la mejor viabilidad y mayor uniformidad del lote.",
+    features: [
+      {
+        text: "Mayor viabilidad y supervivencia.",
+        icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`,
+      },
+      {
+        text: "Menor costo de producción.",
+        icon: `<path d="M13 10V3L4 14h7v7l9-11h-7z"></path>`,
+      },
+    ],
+    images: ["/banner/7.webp", "/banner/8.webp"],
+    waLink:
+      "https://wa.me/51900000000?text=Hola,%20deseo%20cotizar%20Cobb%20500",
+  },
+  {
+    id: "patitos",
+    layout: "card",
+    badge: "Rusticidad",
+    title: "Patitos Criollos",
+    description:
+      "Aves de rápido desarrollo y gran rusticidad. Ideales para sistemas de crianza alternativos o traspatio.",
+    features: [
+      {
+        text: "Rápido crecimiento inicial.",
+        icon: `<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>`,
+      },
+      {
+        text: "Carne magra de gran calidad.",
+        icon: `<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>`,
+      },
+    ],
+    images: ["/banner/10.webp", "/banner/1.webp", "/banner/2.webp"],
+    waLink:
+      "https://wa.me/51900000000?text=Hola,%20deseo%20cotizar%20Patitos%20Criollos",
+  },
+  {
+    id: "ponedoras",
+    layout: "split-right",
+    badge: "Alta Postura",
+    title: "Gallinas Ponedoras",
+    description:
+      "Líneas seleccionadas para garantizar una producción de huevos consistente y un pico de producción prolongado.",
+    features: [
+      {
+        text: "Alto volumen de huevos.",
+        icon: `<path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>`,
+      },
+      {
+        text: "Excelente calidad de cáscara.",
+        icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`,
+      },
+    ],
+    images: ["/banner/3.webp", "/banner/4.webp", "/banner/5.webp"],
+    waLink:
+      "https://wa.me/51900000000?text=Hola,%20deseo%20cotizar%20Gallinas%20Ponedoras",
+  },
+  {
+    id: "pavipollos",
+    layout: "split-left",
+    badge: "Línea Premium",
+    title: "Pavipollos Rojos",
+    description:
+      "Aves robustas desarrolladas para el mercado premium. Ofrecen una excelente conformación corporal y desarrollo rápido.",
+    features: [
+      {
+        text: "Pechuga de gran conformación.",
+        icon: `<path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>`,
+      },
+      {
+        text: "Desarrollo de peso premium.",
+        icon: `<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>`,
+      },
+    ],
+    images: ["/banner/6.webp", "/banner/7.webp"],
+    waLink:
+      "https://wa.me/51900000000?text=Hola,%20deseo%20cotizar%20Pavipollos%20Rojos",
+  },
+];
+
+// SVG del icono de WhatsApp para reutilizar
+const whatsappIcon = `<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-4.821 8.303c-1.806 0-3.578-.484-5.127-1.402l-.368-.218-3.814.999 1.017-3.717-.239-.381C2.464 16.452 1.85 14.28 1.85 12.015 1.85 6.4 6.435 1.815 12.045 1.815c2.715 0 5.268 1.057 7.185 2.977 1.918 1.919 2.974 4.472 2.974 7.189-.001 5.615-4.586 10.202-10.202 10.202"/>`;
+---
+
+<section
+  class="bg-slate-50 py-24 md:py-32 overflow-hidden select-none relative"
+  id="lista-productos"
+>
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div
+      class="text-center max-w-4xl mx-auto mb-16 md:mb-24 reveal opacity-0 translate-y-12"
+      data-delay="0"
+    >
+      <div
+        class="inline-flex items-center justify-center gap-3 mb-6 reveal-child"
+      >
+        <span class="w-8 h-[2px] bg-sky-500 rounded-full"></span>
+        <h3
+          class="text-sky-500 font-bold tracking-[0.2em] text-xs md:text-sm uppercase"
+        >
+          Catálogo Avícola
+        </h3>
+        <span class="w-8 h-[2px] bg-sky-500 rounded-full"></span>
+      </div>
+
+      <h2
+        class="reveal-child text-4xl md:text-6xl lg:text-[5rem] font-black text-slate-900 tracking-tighter leading-[1.05] font-heading mb-6"
+      >
+        Nuestras líneas de <br class="hidden md:block" />
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-sky-300"
+        >
+          alto rendimiento.
+        </span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+      {
+        productos.map((producto) => {
+          // =========================================================
+          // ARQUETIPO: SPLIT L/R
+          // =========================================================
+          if (
+            producto.layout === "split-right" ||
+            producto.layout === "split-left"
+          ) {
+            const isLeft = producto.layout === "split-left";
+            const hasThreeImages = producto.images.length >= 3;
+
+            return (
+              <article class="col-span-1 md:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 reveal opacity-0 translate-y-12">
+                <div
+                  class={`w-full min-h-[400px] md:min-h-[500px] grid grid-cols-2 grid-rows-2 gap-3 md:gap-4 ${isLeft ? "lg:order-1" : "lg:order-2"} parallax-element`}
+                  data-speed="0.1"
+                >
+                  <div class="col-span-1 row-span-2 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden relative group/img shadow-xl">
+                    <div class="absolute inset-0 w-full h-[120%] -top-[10%] parallax-img-container">
+                      <img
+                        src={producto.images[0]}
+                        alt={producto.title}
+                        class="w-full h-full object-cover transition-transform duration-[2s] group-hover/img:scale-110"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class={`rounded-[1.5rem] md:rounded-[2rem] overflow-hidden relative group/img shadow-md ${!hasThreeImages ? "row-span-2" : "row-span-1"}`}
+                  >
+                    <img
+                      src={producto.images[1]}
+                      alt="Detalle 1"
+                      class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover/img:scale-110"
+                    />
+                  </div>
+                  {hasThreeImages && (
+                    <div class="rounded-[1.5rem] md:rounded-[2rem] overflow-hidden relative group/img shadow-md row-span-1">
+                      <img
+                        src={producto.images[2]}
+                        alt="Detalle 2"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover/img:scale-110"
+                      />
+                    </div>
+                  )}
+                </div>
+
+                <div
+                  class={`w-full flex flex-col justify-center p-8 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[3rem] bg-slate-900 border border-slate-800 shadow-2xl relative overflow-hidden group ${isLeft ? "lg:order-2" : "lg:order-1"} parallax-element`}
+                  data-speed="0.05"
+                >
+                  <div class="absolute -inset-20 opacity-0 blur-3xl bg-sky-500/20 transition-opacity duration-700 group-hover:opacity-100 pointer-events-none" />
+                  <div class="absolute -right-10 -bottom-10 opacity-5 text-slate-100 pointer-events-none group-hover:scale-110 transition-transform duration-[2s]">
+                    <svg
+                      class="w-64 h-64"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      stroke-width="1"
+                    >
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                  </div>
+
+                  <div class="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                      <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-[10px] uppercase tracking-widest font-bold">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                        {producto.badge}
+                      </div>
+
+                      <h3 class="text-white text-3xl md:text-5xl font-black font-heading mb-4 group-hover:text-amber-400 transition-colors duration-500">
+                        {producto.title}
+                      </h3>
+                      <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8">
+                        {producto.description}
+                      </p>
+
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        {producto.features.map((f) => (
+                          <div class="flex items-start gap-3 bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-sky-500/30 hover:bg-white/10 transition-colors">
+                            <div class="text-amber-400 shrink-0 mt-0.5">
+                              <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                set:html={f.icon}
+                              />
+                            </div>
+                            <span class="text-slate-200 text-xs md:text-sm font-medium leading-snug">
+                              {f.text}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div class="mt-auto pt-4">
+                      <a
+                        href={producto.waLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group/wa inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 text-slate-900 font-black uppercase text-xs tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_10px_20px_rgba(16,185,129,0.3)] w-full sm:w-auto"
+                      >
+                        <svg
+                          class="w-5 h-5 fill-current"
+                          viewBox="0 0 24 24"
+                          set:html={whatsappIcon}
+                        />
+                        Cotizar por WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            );
+          }
+
+          // =========================================================
+          // ARQUETIPO: VERTICAL CARD
+          // =========================================================
+          if (producto.layout === "card") {
+            return (
+              <article class="col-span-1 flex flex-col rounded-[2.5rem] md:rounded-[3rem] bg-white border border-slate-200 shadow-[0_20px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] overflow-hidden group reveal opacity-0 translate-y-12 transition-shadow duration-500">
+                <div class="w-full h-[280px] md:h-[350px] relative overflow-hidden bg-slate-100">
+                  <div class="absolute inset-0 w-full h-[120%] -top-[10%] parallax-img-container">
+                    <img
+                      src={producto.images[0]}
+                      alt={producto.title}
+                      class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
+                    />
+                  </div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+
+                  <div class="absolute bottom-4 right-4 flex gap-2 z-10">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl border-[3px] border-white shadow-xl overflow-hidden group/thumb hover:-translate-y-2 transition-transform duration-300">
+                      <img
+                        src={producto.images[1]}
+                        alt="Thumb 1"
+                        class="w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-700"
+                      />
+                    </div>
+                    {producto.images[2] && (
+                      <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl border-[3px] border-white shadow-xl overflow-hidden group/thumb hover:-translate-y-2 transition-transform duration-300 delay-75">
+                        <img
+                          src={producto.images[2]}
+                          alt="Thumb 2"
+                          class="w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-700"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div class="p-8 md:p-10 flex flex-col flex-grow bg-white relative z-10">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 w-fit rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-[10px] uppercase tracking-widest font-bold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500" />
+                    {producto.badge}
+                  </div>
+
+                  <h3 class="text-slate-900 text-2xl md:text-3xl font-black font-heading mb-3 group-hover:text-sky-500 transition-colors">
+                    {producto.title}
+                  </h3>
+                  <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-6 flex-grow">
+                    {producto.description}
+                  </p>
+
+                  <ul class="space-y-4 mb-8">
+                    {producto.features.map((f) => (
+                      <li class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-50 text-amber-500 border border-slate-100 flex items-center justify-center shrink-0">
+                          <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            set:html={f.icon}
+                          />
+                        </div>
+                        <span class="text-slate-700 text-sm font-bold">
+                          {f.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="mt-auto">
+                    <a
+                      href={producto.waLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group/wa inline-flex justify-center items-center gap-3 px-6 py-3.5 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 font-bold uppercase text-xs tracking-widest hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all w-full shadow-sm"
+                    >
+                      <svg
+                        class="w-5 h-5 fill-current"
+                        viewBox="0 0 24 24"
+                        set:html={whatsappIcon}
+                      />
+                      Cotizar ahora
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          }
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .font-heading {
+    font-family: "Nunito", sans-serif;
+  }
+
+  .reveal {
+    will-change: transform, opacity;
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-child {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.6s ease;
+  }
+
+  .parallax-element,
+  .parallax-img-container {
+    will-change: transform;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const el = entry.target as HTMLElement;
+          const delay = parseInt(el.dataset.delay || "0", 10);
+
+          setTimeout(() => {
+            el.classList.remove("opacity-0", "translate-y-12");
+            el.classList.add("opacity-100", "translate-y-0");
+
+            const children = el.querySelectorAll<HTMLElement>(".reveal-child");
+            children.forEach((child, i) => {
+              setTimeout(() => {
+                child.style.opacity = "1";
+                child.style.transform = "translateY(0)";
+              }, i * 100);
+            });
+          }, delay);
+
+          obs.unobserve(el);
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    const section = document.getElementById("lista-productos");
+    if (section) {
+      section.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    }
+
+    const parallaxElements =
+      document.querySelectorAll<HTMLElement>(".parallax-element");
+    const imgContainers = document.querySelectorAll<HTMLElement>(
+      ".parallax-img-container",
+    );
+
+    let ticking = false;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const vh = window.innerHeight;
+
+            parallaxElements.forEach((el) => {
+              const rect = el.getBoundingClientRect();
+              if (rect.top < vh && rect.bottom > 0) {
+                const center = rect.top + rect.height / 2;
+                const distance = center - vh / 2;
+                const speed = parseFloat(el.dataset.speed || "0");
+                const yOffset = distance * speed;
+                el.style.transform = `translate3d(0, ${yOffset}px, 0)`;
+              }
+            });
+
+            imgContainers.forEach((container) => {
+              const rect = container.getBoundingClientRect();
+              if (rect.top < vh && rect.bottom > 0) {
+                const center = rect.top + rect.height / 2;
+                const distance = (center - vh / 2) / (vh / 1.5);
+                const img = container.querySelector("img");
+                if (img) {
+                  const yOffset = Math.max(Math.min(distance * 8, 8), -8);
+                  img.style.transform = `translate3d(0, ${yOffset}%, 0)`;
+                }
+              }
+            });
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
+  });
+</script>
