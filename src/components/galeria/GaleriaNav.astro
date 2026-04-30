@@ -1,7 +1,8 @@
 ---
 /*
   GaleriaNav.astro — Galería interactiva (Tailwind Puro)
-  Mejoras: Scroll móvil nativo arreglado, 95% del CSS eliminado usando Tailwind Data Attributes (data-[active=true]).
+  Mejoras aplicadas: Renderizado corregido, unificación de paneles, 
+  prevención de errores null (?.) y vista previa de video nativa con #t=3.
 */
 
 const galerias = [
@@ -12,11 +13,14 @@ const galerias = [
       "Explora la vitalidad, salud y excelente desarrollo de nuestras líneas genéticas en sus primeras etapas.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="6.5"></line></svg>`,
     images: [
-      "/banner/1.webp",
-      "/banner/2.webp",
-      "/banner/3.webp",
-      "/banner/4.webp",
-      "/banner/5.webp",
+      "/productos/cobb_1.webp",
+      "/productos/criollos_1.webp",
+      "/productos/frances_1.webp",
+      "/productos/gallina_1.webp",
+      "/productos/pato_1.webp",
+      "/productos/pavipollo_1.webp",
+      "/productos/ross_1.webp",
+      "/productos/cobb_3.webp",
     ],
   },
   {
@@ -26,10 +30,14 @@ const galerias = [
       "Infraestructura de vanguardia y bioseguridad diseñada para máxima eficiencia.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>`,
     images: [
-      "/banner/2.webp",
-      "/banner/3.webp",
-      "/banner/4.webp",
-      "/banner/1.webp",
+      "/galerias/instalaciones_1.webp",
+      "/galerias/instalaciones_2.webp",
+      "/galerias/instalaciones_3.webp",
+      "/galerias/instalaciones_4.webp",
+      "/galerias/instalaciones_5.webp",
+      "/galerias/instalaciones_6.webp",
+      "/galerias/instalaciones_7.webp",
+      "/galerias/instalaciones_8.webp",
     ],
   },
   {
@@ -38,15 +46,24 @@ const galerias = [
     description:
       "Vehículos climatizados para entregas puntuales y bienestar animal.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>`,
-    images: ["/banner/3.webp", "/banner/4.webp", "/banner/5.webp"],
+    images: [
+      "/galerias/flota_1.webp",
+      "/galerias/flota_2.webp",
+      "/galerias/flota_3.webp",
+      "/galerias/flota_4.webp",
+      "/galerias/flota_5.webp",
+      "/galerias/flota_6.webp",
+      "/galerias/flota_7.webp",
+      "/galerias/flota_8.webp",
+    ],
   },
   {
-    id: "equipo",
-    title: "Nuestro Equipo",
+    id: "video",
+    title: "Videos Corporativos",
     description:
-      "Profesionales apasionados comprometidos con la excelencia avícola.",
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`,
-    images: ["/banner/6.webp", "/banner/7.webp", "/banner/8.webp"],
+      "Conoce más sobre nuestros procesos y compromiso con la calidad avícola.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>`,
+    images: ["/galerias/video_1.mp4", "/galerias/video_2.mp4"],
   },
 ];
 ---
@@ -56,6 +73,7 @@ const galerias = [
   class="relative overflow-hidden py-24 md:py-32 bg-slate-50"
 >
   <div class="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header de la sección -->
     <div
       class="text-center max-w-4xl mx-auto mb-12 md:mb-20 js-reveal opacity-0 translate-y-12 transition-all duration-[800ms] ease-out data-[reveal=true]:opacity-100 data-[reveal=true]:translate-y-0"
       data-delay="0"
@@ -76,13 +94,14 @@ const galerias = [
       >
         Un vistazo a nuestra <br class="hidden md:block" />
         <span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-sky-400 to-amber-400"
+          class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-amber-500"
         >
           excelencia avícola.
         </span>
       </h2>
     </div>
 
+    <!-- Navegación de Tabs -->
     <div
       class="js-reveal opacity-0 translate-y-12 transition-all duration-[800ms] ease-out data-[reveal=true]:opacity-100 data-[reveal=true]:translate-y-0 w-full"
       data-delay="150"
@@ -94,7 +113,7 @@ const galerias = [
           <div
             role="tablist"
             aria-label="Galería de imágenes"
-            class="flex-none inline-flex items-center gap-1.5 md:gap-2 p-1.5 md:p-2 rounded-full bg-slate-600/60 backdrop-blur-md border border-white/15 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.15)]"
+            class="flex-none inline-flex items-center gap-1.5 md:gap-2 p-1.5 md:p-2 rounded-full bg-slate-800/90 backdrop-blur-md border border-slate-700 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.15)]"
           >
             {
               galerias.map((item, i) => (
@@ -105,7 +124,7 @@ const galerias = [
                   id={`tab-${item.id}`}
                   data-target={item.id}
                   data-active={i === 0 ? "true" : "false"}
-                  class="galeria-tab group flex-none inline-flex items-center gap-1.5 md:gap-2 px-4 py-2 md:px-6 md:py-2.5 rounded-full text-slate-100 bg-transparent font-bold text-xs md:text-sm uppercase whitespace-nowrap cursor-pointer transition-all duration-400 ease-out hover:bg-white/10 hover:text-white data-[active=true]:text-amber-400 data-[active=true]:bg-slate-900 data-[active=true]:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.5),inset_0_1px_1px_rgba(255,255,255,0.1)] data-[active=true]:-translate-y-0.5 snap-center"
+                  class="galeria-tab group flex-none inline-flex items-center gap-1.5 md:gap-2 px-4 py-2 md:px-6 md:py-2.5 rounded-full text-slate-300 bg-transparent font-bold text-xs md:text-sm uppercase whitespace-nowrap cursor-pointer transition-all duration-400 ease-out hover:bg-white/10 hover:text-white data-[active=true]:text-amber-400 data-[active=true]:bg-slate-900 data-[active=true]:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.5),inset_0_1px_1px_rgba(255,255,255,0.1)] data-[active=true]:-translate-y-0.5 snap-center"
                 >
                   <div
                     class="flex items-center justify-center w-4 h-4 opacity-70 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100 group-data-[active=true]:opacity-100 group-data-[active=true]:drop-shadow-[0_0_6px_rgba(251,191,36,0.6)]"
@@ -120,14 +139,15 @@ const galerias = [
       </div>
     </div>
 
+    <!-- Caja de Descripciones -->
     <div
       class="js-reveal opacity-0 translate-y-12 transition-all duration-800 ease-out data-[reveal=true]:opacity-100 data-[reveal=true]:translate-y-0 relative z-30 max-w-[1400px] mx-auto w-full mb-10 md:mb-10"
       data-delay="250"
     >
       <div
-        class="relative w-full max-w-[1400px] mx-auto bg-slate-900/85 backdrop-blur-lg border border-white/10 rounded-[20px] md:rounded-[24px] px-5 py-4 md:px-8 md:py-6 shadow-[0_12px_32px_-4px_rgba(15,23,42,0.3)] overflow-hidden before:absolute before:inset-y-0 before:left-0 before:w-1 before:bg-amber-400 before:shadow-[0_0_15px_2px_rgba(251,191,36,0.5)] before:z-10"
+        class="relative w-full max-w-[1400px] mx-auto bg-slate-900 backdrop-blur-lg border border-slate-700 rounded-[20px] md:rounded-[24px] px-5 py-4 md:px-8 md:py-6 shadow-[0_12px_32px_-4px_rgba(15,23,42,0.3)] overflow-hidden before:absolute before:inset-y-0 before:left-0 before:w-1 before:bg-amber-400 before:shadow-[0_0_15px_2px_rgba(251,191,36,0.5)] before:z-10"
       >
-        <div class="relative w-full min-h-18">
+        <div class="relative w-full min-h-[72px]">
           {
             galerias.map((item, i) => (
               <div
@@ -153,40 +173,79 @@ const galerias = [
       </div>
     </div>
 
-    <div class="relative z-10 mt-8 max-w-[1400px] mx-auto w-full">
+    <!-- Contenedor de Grillas/Paneles -->
+    <div class="relative z-10 mt-8 max-w-350 mx-auto w-full">
       {
         galerias.map((galeria, gi) => (
           <div
             role="tabpanel"
-            id={`grid-${galeria.id}`}
+            id={`panel-${galeria.id}`}
             aria-labelledby={`tab-${galeria.id}`}
             data-active={gi === 0 ? "true" : "false"}
-            class="galeria-grid absolute inset-0 w-full grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[240px] xl:auto-rows-[280px] opacity-0 z-0 pointer-events-none translate-y-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] data-[active=true]:opacity-100 data-[active=true]:relative data-[active=true]:z-20 data-[active=true]:pointer-events-auto data-[active=true]:translate-y-0"
+            class={`galeria-panel absolute inset-0 w-full opacity-0 z-0 pointer-events-none translate-y-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] data-[active=true]:opacity-100 data-[active=true]:relative data-[active=true]:z-20 data-[active=true]:pointer-events-auto data-[active=true]:translate-y-0
+            ${
+              galeria.id === "video"
+                ? "grid grid-cols-1 md:grid-cols-2 gap-4"
+                : "grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[240px] xl:auto-rows-[280px]"
+            }
+          `}
           >
-            {galeria.images.map((img, i) => {
-              let span = "col-span-1 row-span-1";
-              if (i === 0) span = "col-span-2 row-span-2";
-              else if (i === 3 && galeria.images.length > 4)
-                span = "col-span-2 row-span-1";
+            {galeria.id === "video"
+              ? // Render de Videos con Media Fragments (#t=3)
+                galeria.images.map((videoPath, i) => (
+                  <div
+                    data-index={i}
+                    data-visible="false"
+                    class="video-card-wrapper gallery-item group relative w-full aspect-video rounded-2xl md:rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/50 shadow-lg cursor-pointer opacity-0 translate-y-4 scale-[0.98] transition-all duration-600 ease-out data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0 data-[visible=true]:scale-100"
+                  >
+                    {/* El propio video actúa de portada gracias al #t=3 */}
+                    <video
+                      preload="metadata"
+                      class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    >
+                      <source src={`${videoPath}#t=2`} type="video/mp4" />
+                      Tu navegador no soporta el formato de video.
+                    </video>
 
-              return (
-                <div
-                  data-index={i}
-                  data-visible="false"
-                  class={`gallery-item relative overflow-hidden rounded-2xl md:rounded-[24px] bg-slate-100 border border-slate-200 cursor-default opacity-0 translate-y-4 scale-[0.98] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-10px_rgba(14,165,233,0.18),0_4px_12px_-2px_rgba(251,191,36,0.12)] hover:border-sky-200 hover:z-30 group data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0 data-[visible=true]:scale-100 ${span}`}
-                  style={`transition-delay: ${i * 70}ms;`}
-                >
-                  <img
-                    src={img}
-                    alt={`${galeria.title} - Imagen ${i + 1}`}
-                    loading="lazy"
-                    decoding="async"
-                    class="absolute inset-0 w-full h-full object-cover scale-[1.03] transition-transform duration-[1.6s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.09]"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 transition-opacity duration-300 pointer-events-none group-hover:opacity-100" />
-                </div>
-              );
-            })}
+                    {/* Overlay de Botón de Play */}
+                    <div class="video-overlay absolute inset-0 flex items-center justify-center bg-black/20 transition-all duration-500 group-hover:bg-black/40 group-hover:backdrop-blur-[2px]">
+                      <div class="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-white/30 to-white/5 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.25)] transition-all duration-500 ease-out group-hover:scale-110 group-hover:border-white/60 group-hover:from-white/40 group-hover:to-white/10 group-hover:shadow-[0_0_30px_rgba(251,191,36,0.3)]">
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="w-10 h-10 ml-1.5 text-white drop-shadow-md transition-colors duration-300 group-hover:text-amber-400"
+                          fill="currentColor"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              : // Render de Imágenes (Con arrow function explicita y return)
+                galeria.images.map((img, i) => {
+                  let span = "col-span-1 row-span-1";
+                  if (i === 0) span = "col-span-2 row-span-2";
+                  else if (i === 3 && galeria.images.length > 4)
+                    span = "col-span-2 row-span-1";
+
+                  return (
+                    <div
+                      data-index={i}
+                      data-visible="false"
+                      class={`gallery-item relative overflow-hidden rounded-2xl md:rounded-3xl bg-slate-100 border border-slate-200 cursor-default opacity-0 translate-y-4 scale-[0.98] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-10px_rgba(14,165,233,0.18),0_4px_12px_-2px_rgba(251,191,36,0.12)] hover:border-sky-200 hover:z-30 group data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0 data-[visible=true]:scale-100 ${span}`}
+                      style={`transition-delay: ${i * 70}ms;`}
+                    >
+                      <img
+                        src={img}
+                        alt={`${galeria.title} - Imagen ${i + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        class="absolute inset-0 w-full h-full object-cover scale-[1.03] transition-transform duration-[1.6s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.09]"
+                      />
+                      <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 transition-opacity duration-300 pointer-events-none group-hover:opacity-100" />
+                    </div>
+                  );
+                })}
           </div>
         ))
       }
@@ -202,6 +261,7 @@ const galerias = [
 </style>
 
 <script>
+  // Si usas View Transitions de Astro, cambia DOMContentLoaded por "astro:page-load"
   document.addEventListener("DOMContentLoaded", () => {
     // 1. ANIMACIÓN DE ENTRADA CON DATA ATTRIBUTES
     const revealObs = new IntersectionObserver(
@@ -229,23 +289,23 @@ const galerias = [
       .querySelectorAll(".js-reveal")
       .forEach((el) => revealObs.observe(el));
 
-    // 2. LÓGICA DE TABS USANDO DATA ATTRIBUTES (data-active y data-visible)
+    // 2. LÓGICA DE TABS UNIFICADA
     const tabs = document.querySelectorAll<HTMLElement>(".galeria-tab");
-    const grids = document.querySelectorAll<HTMLElement>(".galeria-grid");
+    const panels = document.querySelectorAll<HTMLElement>(".galeria-panel");
     const descs = document.querySelectorAll<HTMLElement>(".galeria-desc");
 
-    const triggerGridCascade = (gridId: string) => {
-      const grid = document.getElementById(gridId);
-      if (!grid) return;
-      grid.querySelectorAll<HTMLElement>(".gallery-item").forEach((item) => {
+    const triggerGridCascade = (panelId: string) => {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      panel.querySelectorAll<HTMLElement>(".gallery-item").forEach((item) => {
         item.dataset.visible = "false";
         void item.offsetWidth; // Forzar repintado del DOM
         item.dataset.visible = "true";
       });
     };
 
-    // Iniciar el primer grid
-    setTimeout(() => triggerGridCascade("grid-aves"), 450);
+    // Iniciar el primer panel
+    setTimeout(() => triggerGridCascade("panel-aves"), 450);
 
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => {
@@ -273,21 +333,65 @@ const galerias = [
             desc.id === `desc-${targetId}` ? "true" : "false";
         });
 
-        // Actualizar grids e items
-        grids.forEach((grid) => {
-          const isTargetGrid = grid.id === `grid-${targetId}`;
-          grid.dataset.active = isTargetGrid ? "true" : "false";
+        // Actualizar paneles (tanto grillas de imágenes como de videos)
+        panels.forEach((panel) => {
+          const isTargetPanel = panel.id === `panel-${targetId}`;
+          panel.dataset.active = isTargetPanel ? "true" : "false";
 
-          if (isTargetGrid) {
-            triggerGridCascade(grid.id);
+          if (isTargetPanel) {
+            triggerGridCascade(panel.id);
           } else {
-            grid
+            panel
               .querySelectorAll<HTMLElement>(".gallery-item")
               .forEach((item) => {
                 item.dataset.visible = "false";
               });
+
+            // Pausar y resetear videos al cambiar de pestaña
+            panel.querySelectorAll("video").forEach((video) => {
+              video.pause();
+              const wrapper = video.closest(".video-card-wrapper");
+              if (wrapper) {
+                video.controls = false;
+                video.dataset.playing = "false";
+                video.classList.add("group-hover:scale-[1.03]"); // Devolver hover
+                video.currentTime = 3; // Regresar al frame 3 para la portada
+                wrapper
+                  .querySelector(".video-overlay")
+                  ?.classList.remove("hidden"); // Fix ?. de TypeScript
+              }
+            });
           }
         });
+      });
+    });
+
+    // 3. LÓGICA DE REPRODUCCIÓN DE VIDEO
+    const videoWrappers = document.querySelectorAll<HTMLElement>(
+      ".video-card-wrapper",
+    );
+
+    videoWrappers.forEach((wrapper) => {
+      wrapper.addEventListener("click", () => {
+        const video = wrapper.querySelector("video");
+        const overlay = wrapper.querySelector(".video-overlay");
+
+        // Validación estricta para TypeScript y control de estados
+        if (!video || !overlay || video.dataset.playing === "true") return;
+
+        // Ocultar overlay
+        overlay.classList.add("hidden");
+
+        // Quitar la animación de hover para que el video en play se vea normal
+        video.classList.remove("group-hover:scale-[1.03]");
+
+        // Como estaba mostrando el segundo 3, lo regresamos al 0 para que empiece desde el inicio
+        video.currentTime = 0;
+
+        // Añadir controles nativos y reproducir
+        video.controls = true;
+        video.play();
+        video.dataset.playing = "true";
       });
     });
   });

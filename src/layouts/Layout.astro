@@ -4,51 +4,63 @@ import Header from "../components/Header.astro";
 import "../style/global.css";
 
 interface Props {
-    title?: string;
+  title?: string;
 }
 const { title = "Sistema de Compra y Venta" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    </head>
-    
-    <body class="bg-neutral-50 text-slate-900 min-h-screen relative font-['Plus_Jakarta_Sans',sans-serif] antialiased overflow-x-hidden selection:bg-sky-500/30 selection:text-white">
-        
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-        <Header /> 
-        <slot />
-                <Footer /> 
-
-    </body>
+  <body
+    class="bg-neutral-50 text-slate-900 min-h-screen relative font-['Plus_Jakarta_Sans',sans-serif] antialiased overflow-x-hidden selection:bg-sky-500/30 selection:text-white"
+  >
+    <Header />
+    <slot />
+    <Footer />
+  </body>
 </html>
 
 <style is:global>
-    html { scroll-behavior: smooth; }
-    
-    /* Animaciones fluidas para los orbes de luz */
-    @keyframes blob {
-        0% { transform: translate(0px, 0px) scale(1); }
-        33% { transform: translate(30px, -50px) scale(1.1); }
-        66% { transform: translate(-20px, 20px) scale(0.9); }
-        100% { transform: translate(0px, 0px) scale(1); }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Animaciones fluidas para los orbes de luz */
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
     }
-    .animate-blob {
-        animation: blob 15s infinite alternate ease-in-out;
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
     }
-    .animation-delay-2000 {
-        animation-delay: 2s;
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
     }
-    .animation-delay-4000 {
-        animation-delay: 4s;
+    100% {
+      transform: translate(0px, 0px) scale(1);
     }
+  }
+  .animate-blob {
+    animation: blob 15s infinite alternate ease-in-out;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
 </style>

@@ -20,7 +20,11 @@ const procesos = [
         desc: "Ambiente 100% controlado, esterilizado y seguro.",
       },
     ],
-    image: "/banner/6.webp",
+    images: [
+      "/nosotros/control_clima.webp",
+      "/nosotros/alta_tecnologia.webp",
+      "/nosotros/monitoreo.webp",
+    ],
   },
   {
     id: "vacunas",
@@ -41,20 +45,24 @@ const procesos = [
         desc: "Vacunación adicional en planta según requerimientos de zonificación.",
       },
     ],
-    image: "/banner/4.webp",
+    images: [
+      "/nosotros/marek.webp",
+      "/nosotros/newCastle.webp",
+      "/nosotros/programa_medida.webp",
+    ],
   },
   {
     id: "controles",
     tabTitle: "Controles de calidad",
     icon: `<path d="M1 21h4V9H1v12zm22-10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/>`,
-    title: "Controles estrictos",
+    title: "Controles calidad",
     items: [
       {
         text: "Evaluación física",
         desc: "Revisión detallada de la vitalidad y conformación del pollito BB.",
       },
       {
-        text: "Pesaje automatizado",
+        text: "Control de peso",
         desc: "Control de uniformidad para garantizar lotes parejos.",
       },
       {
@@ -62,7 +70,11 @@ const procesos = [
         desc: "Certificación de estándares sanitarios antes de cada despacho.",
       },
     ],
-    image: "/banner/5.webp",
+    images: [
+      "/nosotros/evaluacion_fisica.webp",
+      "/nosotros/control_peso.webp",
+      "/nosotros/bioseguridad.webp",
+    ],
   },
 ];
 ---
@@ -73,7 +85,7 @@ const procesos = [
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div
-      class="max-w-6xl mx-auto mb-20 md:mb-28 mt-8 flex flex-col md:flex-row items-start justify-between gap-10 reveal-element opacity-0 translate-y-12 transition-all duration-[1s] ease-out"
+      class="max-w-6xl mx-auto mb-20 md:mb-28 mt-8 flex flex-col md:flex-row items-start justify-between gap-10 reveal-element opacity-0 translate-y-12 transition-all duration-1000 ease-out"
     >
       <div class="flex flex-col gap-4">
         <div class="flex items-center gap-4">
@@ -90,7 +102,7 @@ const procesos = [
         >
           Nuestro proceso <br class="hidden md:block" />
           <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-sky-300"
+            class="text-transparent bg-clip-text bg-linear-to-r from-sky-500 to-sky-300"
           >
             de incubación.
           </span>
@@ -140,7 +152,7 @@ const procesos = [
     <div class="relative w-full mt-10 md:mt-16 max-w-6xl mx-auto">
       <div class="absolute -top-16 left-0 right-0 z-30 px-4 md:px-12">
         <div
-          class="grid grid-cols-3 gap-3 md:gap-6 reveal-element opacity-0 translate-y-12 transition-all duration-[1s] ease-out delay-200"
+          class="grid grid-cols-3 gap-3 md:gap-6 reveal-element opacity-0 translate-y-12 transition-all duration-1000 ease-out delay-200"
         >
           {
             procesos.map((proceso, index) => {
@@ -148,8 +160,8 @@ const procesos = [
               return (
                 <button
                   data-tab={proceso.id}
-                  class={`tab-btn relative flex flex-col items-center justify-center text-center p-4 md:p-6 rounded-2xl md:rounded-[2rem] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group shadow-2xl
-                            ${isActive ? "bg-slate-900 text-white shadow-[0_20px_40px_rgba(15,23,42,0.3)] scale-105 z-10 translate-y-[-10px]" : "bg-white text-slate-500 shadow-xl border border-slate-100 hover:-translate-y-2 hover:text-slate-900"}`}
+                  class={`tab-btn relative flex flex-col items-center justify-center text-center p-4 md:p-6 rounded-2xl md:rounded-4xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group shadow-2xl
+                          ${isActive ? "bg-slate-900 text-white shadow-[0_20px_40px_rgba(15,23,42,0.3)] scale-105 z-10 -translate-y-2.5" : "bg-white text-slate-500 shadow-xl border border-slate-100 hover:-translate-y-2 hover:text-slate-900"}`}
                 >
                   <div
                     class={`w-8 h-8 md:w-12 md:h-12 mb-2 md:mb-4 flex items-center justify-center transition-colors duration-500 ${isActive ? "text-amber-400" : "text-sky-500 group-hover:text-sky-400"}`}
@@ -166,7 +178,7 @@ const procesos = [
                   </span>
 
                   <div
-                    class={`tab-arrow absolute -bottom-3 md:-bottom-4 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] md:border-l-[16px] border-l-transparent border-r-[12px] md:border-r-[16px] border-r-transparent border-t-[12px] md:border-t-[16px] border-t-slate-900 transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`}
+                    class={`tab-arrow absolute -bottom-3 md:-bottom-4 left-1/2 -translate-x-1/2 w-0 h-0 border-l-12 md:border-l-16 border-l-transparent border-r-12 md:border-r-16 border-r-transparent border-t-12 md:border-t-16 border-t-slate-900 transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-0"}`}
                   />
                 </button>
               );
@@ -186,25 +198,51 @@ const procesos = [
               <article
                 data-panel={proceso.id}
                 class={`panel-content col-start-1 row-start-1 transition-all duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)] w-full
-                        ${isActive ? "opacity-100 z-20 translate-y-0 scale-100 pointer-events-auto" : "opacity-0 z-0 translate-y-12 scale-[0.98] pointer-events-none"}`}
+                      ${isActive ? "opacity-100 z-20 translate-y-0 scale-100 pointer-events-auto" : "opacity-0 z-0 translate-y-12 scale-[0.98] pointer-events-none"}`}
               >
-                <div class="relative overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] bg-slate-900/90 backdrop-blur-3xl backdrop-saturate-[180%] border border-white/10 shadow-[0_30px_60px_rgba(15,23,42,0.4)] p-8 md:p-12 lg:p-16">
-                  <div class="absolute -inset-20 z-0 opacity-30 blur-3xl pointer-events-none bg-gradient-to-tr from-sky-500/40 via-transparent to-amber-400/20" />
+                <div class="relative overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] bg-slate-900/90 backdrop-blur-3xl backdrop-saturate-180 border border-white/10 shadow-[0_30px_60px_rgba(15,23,42,0.4)] p-4 md:p-12 lg:p-16">
+                  <div class="absolute -inset-20 z-0 opacity-30 blur-3xl pointer-events-none bg-linear-to-tr from-sky-500/40 via-transparent to-amber-400/20" />
 
-                  <div class="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-16 items-center pt-8 md:pt-4">
-                    <div class="w-full lg:w-[45%] h-[300px] md:h-[400px] lg:h-[480px] rounded-[2rem] overflow-hidden shadow-2xl relative order-2 lg:order-1 group/img">
-                      <div class="absolute inset-0 border-4 border-white/10 rounded-[2rem] z-20 pointer-events-none" />
-                      <div class="parallax-img-container w-full h-[120%] -top-[10%] absolute inset-0 transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)] z-10">
-                        <img
-                          src={proceso.image}
-                          alt={proceso.title}
-                          class="w-full h-full object-cover transition-transform duration-[2s] group-hover/img:scale-105"
-                        />
+                  <div class="relative z-10 flex flex-col lg:flex-row gap-6 lg:gap-16 items-center pt-8 md:pt-4">
+                    {/* Contenedor de la Imagen / Slider */}
+                    <div class="w-full lg:w-[45%] h-75 md:h-100 lg:h-120 rounded-4xl overflow-hidden shadow-2xl relative order-2 lg:order-1 group/img bg-slate-800">
+                      <div class="absolute inset-0 border-4 border-white/10 rounded-4xl z-20 pointer-events-none" />
+
+                      <div class="parallax-img-container w-full h-[120%] top-[-10%] absolute inset-0 transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,1,0.5,1)] z-10">
+                        {/* Implementación JS del Slider (Arrastrable) */}
+                        <div class="slider-instance relative w-full h-full overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y">
+                          <div class="slider-track flex w-full h-full transition-transform duration-500 ease-out will-change-transform">
+                            {proceso.images.map((img, imgIdx) => (
+                              <div class="slide-item w-full h-full shrink-0 relative">
+                                <img
+                                  src={img}
+                                  alt={`${proceso.title} - Imagen ${imgIdx + 1}`}
+                                  class="w-full h-full object-cover pointer-events-none"
+                                  loading={imgIdx === 0 ? "eager" : "lazy"}
+                                  draggable="false"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
+
+                      {/* Dots de Navegación del Slider */}
+                      {proceso.images.length > 1 && (
+                        <div class="slider-dots absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-30">
+                          {proceso.images.map((_, dotIdx) => (
+                            <button
+                              data-index={dotIdx}
+                              aria-label={`Ir a imagen ${dotIdx + 1}`}
+                              class={`dot-indicator transition-all duration-300 h-2 rounded-full cursor-pointer hover:bg-amber-300 ${dotIdx === 0 ? "w-6 bg-amber-400" : "w-2 bg-white/50"}`}
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
 
                     <div class="w-full lg:w-[55%] flex flex-col order-1 lg:order-2">
-                      <h3 class="text-2xl md:text-4xl font-black text-white mb-8 font-heading drop-shadow-md">
+                      <h3 class="text-2xl md:text-4xl font-black text-white mb-6 font-heading drop-shadow-md">
                         {proceso.title}
                       </h3>
 
@@ -253,7 +291,6 @@ const procesos = [
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // 1. ANIMACIÓN REVEAL
     const observer = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
@@ -271,7 +308,6 @@ const procesos = [
       },
       { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
     );
-
     document
       .querySelectorAll(".reveal-element")
       .forEach((el) => observer.observe(el));
@@ -284,7 +320,6 @@ const procesos = [
       tab.addEventListener("click", () => {
         const targetId = tab.getAttribute("data-tab");
 
-        // Limpiar todas las clases de las tabs
         tabs.forEach((t) => {
           t.classList.remove(
             "bg-slate-900",
@@ -300,17 +335,14 @@ const procesos = [
             "shadow-xl",
             "border-slate-100",
           );
-
           const icon = t.querySelector("div");
           icon?.classList.remove("text-amber-400");
           icon?.classList.add("text-sky-500", "group-hover:text-sky-400");
-
           const arrow = t.querySelector(".tab-arrow");
           arrow?.classList.remove("opacity-100");
           arrow?.classList.add("opacity-0");
         });
 
-        // Aplicar clases a la tab activa
         tab.classList.remove(
           "bg-white",
           "text-slate-500",
@@ -337,7 +369,6 @@ const procesos = [
         activeArrow?.classList.remove("opacity-0");
         activeArrow?.classList.add("opacity-100");
 
-        // Mostrar Panel
         panels.forEach((panel) => {
           if (panel.getAttribute("data-panel") === targetId) {
             panel.classList.remove(
@@ -374,7 +405,6 @@ const procesos = [
       });
     });
 
-    // 3. PARALLAX
     const section = document.getElementById("proceso-section");
     const imgContainers = document.querySelectorAll(".parallax-img-container");
     let ticking = false;
@@ -383,7 +413,6 @@ const procesos = [
       "scroll",
       () => {
         if (!section) return;
-
         if (!ticking) {
           window.requestAnimationFrame(() => {
             const rect = section.getBoundingClientRect();
@@ -409,5 +438,145 @@ const procesos = [
       },
       { passive: true },
     );
+
+    // 4. LÓGICA DEL SLIDER (Swipe Táctil, Arrastre PC y Autoplay)
+    const sliders = document.querySelectorAll(".slider-instance");
+
+    sliders.forEach((slider) => {
+      const track = slider.querySelector(".slider-track") as HTMLElement;
+      const dotsContainer = slider.parentElement?.querySelector(".slider-dots");
+      const dots = dotsContainer?.querySelectorAll(".dot-indicator");
+      const slides = slider.querySelectorAll(".slide-item");
+
+      if (!track || slides.length <= 1) return;
+
+      let currentIndex = 0;
+      let startX = 0;
+      let currentX = 0;
+      let isDragging = false;
+      let autoplayTimer: number; // Temporizador para el autoplay
+
+      const updateSlider = () => {
+        track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
+
+        if (dots) {
+          dots.forEach((dot, idx) => {
+            if (idx === currentIndex) {
+              dot.classList.remove("w-2", "bg-white/50");
+              dot.classList.add("w-6", "bg-amber-400");
+            } else {
+              dot.classList.remove("w-6", "bg-amber-400");
+              dot.classList.add("w-2", "bg-white/50");
+            }
+          });
+        }
+      };
+
+      const startAutoplay = () => {
+        stopAutoplay();
+        autoplayTimer = window.setInterval(() => {
+          currentIndex++;
+          if (currentIndex >= slides.length) currentIndex = 0;
+          updateSlider();
+        }, 3000);
+      };
+
+      const stopAutoplay = () => {
+        if (autoplayTimer) window.clearInterval(autoplayTimer);
+      };
+
+      // Iniciar el autoplay automáticamente
+      startAutoplay();
+
+      // Pausar al pasar el mouse (Desktop)
+      slider.addEventListener("mouseenter", stopAutoplay);
+      slider.addEventListener("mouseleave", startAutoplay);
+
+      // --- Eventos Táctiles (Móviles) ---
+      slider.addEventListener(
+        "touchstart",
+        (e: any) => {
+          stopAutoplay(); // Pausa el autoplay al tocar
+          startX = e.touches[0].clientX;
+          isDragging = true;
+        },
+        { passive: true },
+      );
+
+      slider.addEventListener(
+        "touchmove",
+        (e: any) => {
+          if (!isDragging) return;
+          currentX = e.touches[0].clientX;
+        },
+        { passive: true },
+      );
+
+      slider.addEventListener("touchend", () => {
+        startAutoplay(); // Reanuda al soltar el dedo
+        if (!isDragging) return;
+        isDragging = false;
+        if (currentX === 0) return;
+
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            // Swipe a la izquierda (Siguiente)
+            currentIndex =
+              currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
+          } else {
+            // Swipe a la derecha (Anterior)
+            currentIndex =
+              currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
+          }
+        }
+        currentX = 0;
+        updateSlider();
+      });
+
+      // --- Eventos de Mouse (PC) ---
+      slider.addEventListener("mousedown", (e: any) => {
+        stopAutoplay();
+        startX = e.clientX;
+        isDragging = true;
+      });
+
+      slider.addEventListener("mousemove", (e: any) => {
+        if (!isDragging) return;
+        currentX = e.clientX;
+      });
+
+      window.addEventListener("mouseup", () => {
+        if (!isDragging) return;
+        isDragging = false;
+        if (currentX === 0) return;
+
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            currentIndex =
+              currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
+          } else {
+            currentIndex =
+              currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
+          }
+        }
+        currentX = 0;
+        updateSlider();
+        startAutoplay(); // Reanuda si arrastró con el mouse y soltó fuera
+      });
+
+      // Clic directo en los dots
+      if (dots) {
+        dots.forEach((dot, idx) => {
+          dot.addEventListener("click", () => {
+            stopAutoplay();
+            currentIndex = idx;
+            updateSlider();
+            startAutoplay(); // Reinicia la cuenta de 5 segundos tras el click
+          });
+        });
+      }
+    });
   });
 </script>
