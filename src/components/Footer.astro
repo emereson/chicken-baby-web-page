@@ -17,33 +17,42 @@ const links = {
 };
 ---
 
-<footer class="relative bg-slate-950 pt-12 pb-12 overflow-hidden select-none">
-  <div class="max-w-6xl mx-auto px-4 mb-20 relative z-10">
+<footer class="relative bg-slate-950 pt-18 pb-12 overflow-hidden select-none">
+  <!-- Efectos de iluminación de fondo -->
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-125 bg-sky-900/10 blur-[120px] pointer-events-none rounded-full"
+  >
+  </div>
+
+  <!-- Banner Call to Action Superior -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10">
     <div
       class="reveal-element opacity-0 translate-y-12 transition-all duration-1000 relative group"
     >
+      <!-- Glow effect -->
       <div
-        class="absolute -inset-1 bg-linear-to-r from-sky-500 to-amber-500 rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"
+        class="absolute -inset-1 bg-linear-to-r from-sky-500 via-blue-500 to-amber-500 rounded-[2.5rem] blur-xl opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-500"
       >
       </div>
 
+      <!-- Glass Card -->
       <div
-        class="relative bg-slate-900/50 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl"
+        class="relative bg-slate-900/80 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl"
       >
-        <div class="max-w-xl text-center md:text-left">
+        <div class="max-w-2xl text-center lg:text-left">
           <h2
-            class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tighter"
+            class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter"
           >
             ¿Listo para mejorar tu producción?
           </h2>
-          <p class="text-slate-400 font-medium leading-relaxed">
+          <p class="text-slate-400 text-lg font-medium leading-relaxed">
             Únete a cientos de clientes que ya confían en nuestra genética
             superior. Calidad garantizada en cada nacimiento.
           </p>
         </div>
         <a
           href="/contacto"
-          class="group/btn relative inline-flex items-center justify-center px-10 py-4 rounded-full bg-sky-500 text-slate-950 font-black text-sm uppercase tracking-widest transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_10px_20px_rgba(14,165,233,0.3)]"
+          class="group/btn relative inline-flex items-center justify-center px-10 py-5 rounded-full bg-sky-500 text-slate-950 font-black text-sm uppercase tracking-widest transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(14,165,233,0.4)] shrink-0"
         >
           <span
             class="relative z-10 flex items-center gap-2 group-hover/btn:text-white transition-colors duration-300"
@@ -54,12 +63,13 @@ const links = {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              ><path
+            >
+              <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2.5"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
-            >
+                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
           </span>
         </a>
       </div>
@@ -211,15 +221,6 @@ const links = {
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
-                    d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-                  ></path>
-                </svg>
-              </div>
-              <div
-                class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-sky-500/20 group-hover:border-sky-500/50 group-hover:text-sky-400 transition-all duration-300"
-              >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path
                     d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.48 0 .13 5.35.13 11.93c0 2.1.55 4.15 1.59 5.96L0 24l6.28-1.65a11.93 11.93 0 0 0 5.78 1.47h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.18-3.48-8.41zM12.07 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.86 9.86 0 0 1-1.52-5.25c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.89-9.89 9.89zm5.43-7.42c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.8-1.67-2.1-.18-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.08-.8.37-.27.3-1.05 1.02-1.05 2.48 0 1.47 1.08 2.88 1.23 3.08.15.2 2.12 3.23 5.14 4.53.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"
                   ></path>
                 </svg>
@@ -243,15 +244,6 @@ const links = {
                   ></path>
                 </svg>
               </div>
-              <div
-                class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-sky-500/20 group-hover:border-sky-500/50 group-hover:text-sky-400 transition-all duration-300"
-              >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.48 0 .13 5.35.13 11.93c0 2.1.55 4.15 1.59 5.96L0 24l6.28-1.65a11.93 11.93 0 0 0 5.78 1.47h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.18-3.48-8.41zM12.07 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.86 9.86 0 0 1-1.52-5.25c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.89-9.89 9.89zm5.43-7.42c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.8-1.67-2.1-.18-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.08-.8.37-.27.3-1.05 1.02-1.05 2.48 0 1.47 1.08 2.88 1.23 3.08.15.2 2.12 3.23 5.14 4.53.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"
-                  ></path>
-                </svg>
-              </div>
               <span class="text-sm font-medium pt-1.5 leading-tight"
                 >+51 946 363 913
               </span>
@@ -261,24 +253,94 @@ const links = {
       </div>
     </div>
 
+    <!-- SECCIÓN INFERIOR Y LIBRO DE RECLAMACIONES -->
     <div
-      class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6"
+      class="pt-8 pb-4 border-t border-white/10 flex flex-col lg:flex-row items-center justify-between gap-8"
     >
-      <p class="text-slate-500 text-xs font-medium">
-        &copy; {currentYear} Avícola Chickenbaby. Todos los derechos reservados.
-      </p>
-      <!-- <div class="flex gap-8">
-        <a
-          href="#"
-          class="text-slate-500 text-xs hover:text-sky-400 transition-colors"
-          >Términos y Condiciones</a
+      <!-- 1. Información Empresarial -->
+      <div
+        class="flex flex-col items-center lg:items-start gap-1 text-center lg:text-left order-1 lg:order-1"
+      >
+        <h5
+          class="text-slate-200 text-sm uppercase tracking-[0.2em] font-black"
         >
-        <a
-          href="#"
-          class="text-slate-500 text-xs hover:text-sky-400 transition-colors"
-          >Políticas de Privacidad</a
+          Granjas Peruanas Chickenbaby SAC
+        </h5>
+        <p
+          class="text-slate-500 text-xs font-medium flex items-center justify-center lg:justify-start flex-wrap gap-2 mt-1"
         >
-      </div> -->
+          <span>RUC: 20614310694</span>
+          <span class="hidden sm:inline text-slate-700">•</span>
+          <span>&copy; {currentYear} Todos los derechos reservados.</span>
+        </p>
+      </div>
+
+      <!-- 2. Libro de Reclamaciones -->
+      <div class="order-2 lg:order-2">
+        <a
+          href="/libro-reclamaciones"
+          class="group relative flex items-center gap-4 px-6 py-3.5 rounded-2xl bg-slate-900 border border-white/10 hover:bg-rose-500/10 hover:border-rose-500/30 transition-all duration-300 shadow-lg hover:shadow-rose-500/20 hover:-translate-y-1"
+        >
+          <div
+            class="text-slate-400 group-hover:text-rose-400 transition-colors"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex flex-col text-left">
+            <span
+              class="text-white font-black text-sm tracking-wide leading-none mb-1 group-hover:text-rose-100 transition-colors"
+            >
+              Libro de Reclamaciones
+            </span>
+            <span
+              class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.15em] leading-none group-hover:text-rose-400/80 transition-colors"
+            >
+              Atención al Consumidor
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- 3. Desarrollado por -->
+      <div class="order-3 lg:order-3">
+        <a
+          href="https://you-developer.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center gap-2 text-slate-500 text-xs font-medium bg-slate-900 px-5 py-2.5 rounded-full border border-white/10 hover:border-sky-500/30 transition-colors cursor-pointer"
+        >
+          <svg
+            class="w-4 h-4 text-sky-500/70 group-hover:text-sky-400 transition-colors"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+          </svg>
+          Desarrollado por
+          <p
+            class="text-slate-300 hover:text-sky-400 font-bold transition-colors"
+          >
+            Tu-Developer
+          </p>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -289,7 +351,6 @@ const links = {
 </footer>
 
 <style>
-  /* Mantenemos la consistencia con la tipografía */
   @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap");
   h2,
   h4 {
