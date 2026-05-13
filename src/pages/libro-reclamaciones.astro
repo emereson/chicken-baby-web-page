@@ -598,7 +598,7 @@ import Layout from "../layouts/Layout.astro";
       try {
         // REEMPLAZA ESTA URL CON EL ENDPOINT DE TU BACKEND PARA RECLAMACIONES
         const response = await fetch(
-          "http://localhost:3001/api/v1/apiPeru/libro-reclamaciones",
+          "https://facturacion-cb-backend-production.up.railway.app/api/v1/apiPeru/libro-reclamaciones",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
